@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://l87r78.github.io/App/",
+  "homepage": "https://l87r78.github.io/app/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
