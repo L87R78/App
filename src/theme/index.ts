@@ -7,7 +7,7 @@ import components from './components';
 const theme = {
   colors,
   typography,
-  // spacing,
+  spacing,
   breakpoints,
   components,
 };
