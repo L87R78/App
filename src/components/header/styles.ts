@@ -1,16 +1,16 @@
 const classes = {
-  containerHeader: () => ({
+  containerHeader: (isOpenNavigation: boolean) => ({
     position: 'fixed',
     right: '24px',
     top: '24px',
-    left: '380px',
+    left: !isOpenNavigation ? '380px' : '170px',
     height: '50px',
-    // width: '45%',
     padding: '16px 24px',
     borderRadius: '24px',
     background: '#fff',
     display: 'flex',
     alignItems: 'center',
+    transition: 'all 0.5s ease',
   }),
 };
 

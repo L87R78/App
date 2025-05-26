@@ -3,11 +3,22 @@ const classes = {
     position: 'fixed',
     right: 0,
     bottom: 0,
-    height: '50px',
+    height: '70px',
     width: '100%',
     display: 'flex',
     alignItems: 'center',
-    border: '1px solid green',
+    justifyContent: 'flex-end',
+    borderTop: '1px solid #CACED5',
+  },
+  wrapperItems: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    margin: '0px 16px',
+  },
+  title: {
+    fontSize: '16px',
+    color: '#7D828B',
   },
 };
 

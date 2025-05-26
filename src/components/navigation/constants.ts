@@ -20,29 +20,29 @@ const clientData = [
     path: '',
   },
   {
-    title: 'Client-accounts',
+    title: 'Client Accounts',
     path: route.clientAccounts,
   },
   {
-    title: 'Client-data',
+    title: 'Client Data',
     path: route.clientData,
   },
 ] as const;
 const reportsData = [
   {
     title: 'Reports',
-    path: route.client,
-  },
-  {
-    title: 'Currency-rates',
     path: '',
   },
   {
-    title: 'Account-reports',
+    title: 'Currency Rates',
     path: '',
   },
   {
-    title: 'Credit-reports',
+    title: 'Account Reports',
+    path: '',
+  },
+  {
+    title: 'Credit Reports',
     path: '',
   },
 ] as const;
@@ -89,7 +89,7 @@ const paymentOperationsData = [
   },
   {
     title: 'Transfers',
-    path: '',
+    path: route.paymentOperationsTranfers,
   },
 ] as const;
 
