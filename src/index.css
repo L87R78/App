@@ -1,18 +1,151 @@
-* {
-  margin: 0;
-  padding: 0;
+@import 'tailwindcss';
 
-  /* Firefox */
-  scrollbar-color: #52ae30 white;
-  scrollbar-width: thin;
+:root {
+  /* === Base === */
+  --base-animation-duration: 600ms;
+  --base-border-radius: 1.5rem;
+  --base-clr-skeleton: #e2e5e7;
+  --base-clr-stroke: hsla(220, 11%, 81%, 1);
+  --base-font-size: 1rem;
+  --base-font-size-sm: 0.575rem;
+  --base-padding: 1rem;
+  --base-box-shadow: 0px 8px 24px 0px rgba(73, 92, 136, 0.15);
+  --popover-box-shadow:
+    0 16px 24px -10px rgba(50, 50, 93, 0.25), 0 16px 24px -16px rgba(0, 0, 0, 0.3);
+  --short-animation-duration: 200ms;
+
+  /* === Border / Outline === */
+  --clr-border-disabled: hsl(219, 13%, 75%);
+  --clr-border-hover: hsl(219, 13%, 80%);
+  --clr-border-primary: hsl(219, 13%, 70%);
+  --clr-outline-disabled: hsl(219, 13%, 75%);
+  --clr-outline-hover: hsl(219, 13%, 80%);
+  --clr-outline-primary: hsl(219, 6%, 70%);
+
+  /* === Colors: Accent === */
+  --clr-accent: #ff6600;
+  --clr-accent-dark: #cc5200;
+  --clr-accent-hover: #ff8533;
+  --clr-accent-light: #fff0e6;
+
+  /* === Colors: Danger === */
+  --clr-danger: #ff435a;
+  --clr-danger-dark: #e7273e;
+  --clr-danger-hover: #ff5669;
+  --clr-danger-light: #ffecef;
+
+  /* === Colors: Info === */
+  --clr-info: #1b82e3;
+  --clr-info-dark: #1668b6;
+  --clr-info-hover: #499be9;
+  --clr-info-light: #e8f3fc;
+
+  /* === Colors: Primary === */
+  --clr-primary: #52ae30;
+  --clr-primary-dark: #428b26;
+  --clr-primary-hover: #74be59;
+  --clr-primary-light: #eef7ea;
+
+  /* === Colors: Warning === */
+  --clr-warning: #ffcc00;
+  --clr-warning-dark: #614f05;
+  --clr-warning-hover: #fddb51;
+  --clr-warning-light: #fffae6;
+
+  /* === Backgrounds === */
+  --clr-bg-1: hsl(0, 0%, 100%);
+  --clr-bg-2: hsl(240, 8%, 95%);
+  --clr-bg-3: hsl(150, 8%, 95%);
+  --clr-bg-4: hsl(150, 8%, 92%);
+  --clr-bg-5: hsl(0, 0%, 85%);
+  --clr-bg-disabled: hsl(0, 0%, 95%);
+  --clr-bg-overlay: rgba(25, 25, 25, 0.27);
+  --clr-bg-nav-active: var(--clr-primary-light);
+
+  /* === Checkbox / Icon / Misc === */
+  --clr-checkbox-disabled: hsla(228, 7%, 72%, 1);
+  --clr-icon: var(--clr-white);
+  --clr-selection: var(--clr-warning);
+
+  /* === Fieldset / Form === */
+  --field-border-radius: 0.75rem;
+  --field-label-font-size: 0.875rem;
+  --fieldset-clr-bg: hsl(0, 0%, 100%);
+  --fieldset-padding-top: 0;
+  --fld-border-radius: 1rem;
+
+  /* === Tabs === */
+  --tabs-fo-border-radius: 1rem;
+  --tabs-fo-clr-bg: var(--clr-bg-1);
+  --tabs-fo-tab-hover: var(--clr-primary-light);
+
+  /* === Text === */
+  --clr-text: #000;
+  --clr-text-dark: hsl(219, 5%, 9%);
+  --clr-text-disabled: hsl(0, 0%, 75%);
+  --clr-text-label: hsla(219, 6%, 52%, 1);
+  --clr-text-nav-active: var(--clr-text-primary);
+  --clr-text-primary: hsl(219, 5%, 9%);
+  --clr-text-secondary: hsl(219, 5%, 50%);
+
+  /* === Typography === */
+  --typography-h1-font-size: 3.25rem;
+  --typography-h1-font-weight: 900;
+  --typography-h1-line-height: 3rem;
+
+  --typography-h2-font-size: 3rem;
+  --typography-h2-font-weight: 700;
+  --typography-h2-line-height: 2rem;
+
+  --typography-h3-font-size: 2.5rem;
+  --typography-h3-font-weight: 600;
+  --typography-h3-line-height: 1.75rem;
+
+  --typography-h4-font-size: 2rem;
+  --typography-h4-font-weight: 400;
+  --typography-h4-line-height: 2rem;
+
+  --typography-h5-font-size: 1.75rem;
+  --typography-h5-line-height: 1.75rem;
+
+  --typography-p-font-size: 1.25rem;
+  --typography-p-font-weight: 400;
+  --typography-p-line-height: 1.5rem;
+
+  --clr-white: #ffffff;
 }
 
-/* Chrome & Safar */
-::-webkit-scrollbar {
-  width: 4px;
-  height: 7px;
-}
-::-webkit-scrollbar-thumb {
-  background-color: #52ae30;
-  border-radius: 50px;
+[data-theme='theme-dark'] {
+  --base-box-shadow: 0px 8px 24px 0px rgba(97, 97, 97, 0.185);
+  --base-clr-stroke: hsla(227, 5%, 36%, 1);
+
+  --clr-bg-1: hsl(220, 4%, 14%);
+  --clr-bg-2: hsl(220, 5%, 25%);
+  --clr-bg-3: hsl(220, 5%, 22%);
+  --clr-bg-4: hsl(216, 5%, 20%);
+  --clr-bg-5: hsl(230, 5%, 18%);
+  --clr-bg-disabled: hsl(216, 5%, 20%);
+  --clr-bg-nav-active: var(--clr-bg-2);
+
+  --clr-border-disabled: hsl(0, 0%, 30%);
+  --clr-border-hover: hsl(0, 0%, 40%);
+  --clr-border-primary: hsl(0, 0%, 35%);
+
+  --clr-icon: black;
+
+  --clr-outline-disabled: hsl(0, 0%, 30%);
+  --clr-outline-hover: hsl(0, 0%, 40%);
+  --clr-outline-primary: hsl(0, 0%, 50%);
+
+  --clr-text-disabled: hsl(0, 0%, 40%);
+  --clr-text-nav-active: var(--clr-text-primary);
+  --clr-text-primary: hsl(220, 35%, 93%);
+  --clr-text-secondary: hsl(219, 13%, 69%);
+
+  --fieldset-clr-bg: hsl(150, 8%, 97%);
+  --fieldset-padding-top: 2rem;
+  --fld-border-radius: 0.25rem;
+
+  --tabs-fo-clr-bg: var(--clr-bg-1);
+  --tabs-fo-tab-hover: hsl(219, 13%, 69%, 0.4);
 }
