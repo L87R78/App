@@ -1,4 +1,4 @@
-import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
+import ExpandMoreOutlinedIcon from '../assets/icons/iconDown.svg';
 
 export const commonThemeOptions = {
   typography: {
@@ -150,6 +150,17 @@ export const commonThemeOptions = {
           '&.Mui-disabled': {
             color: 'var(--clr-text-disabled, hsl(0, 0%, 75%))',
             cursor: 'not-allowed',
+          },
+        },
+      },
+    },
+    MuiModal: {
+      defaultProps: {
+        slotProps: {
+          backdrop: {
+            sx: {
+              background: 'var(--clr-bg-overlay, rgba(25, 25, 25, 0.27))',
+            },
           },
         },
       },
