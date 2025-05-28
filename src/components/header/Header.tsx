@@ -1,5 +1,4 @@
-import { Box } from '@mui/material';
-
+import { Box } from '../shared';
 import classes from './styles';
 
 interface HeaderProps {

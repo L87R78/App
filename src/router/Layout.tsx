@@ -1,9 +1,7 @@
+import { Box } from '@/components/shared';
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Box } from '@mui/material';
-
-import { Header, Footer, Navigation } from '../components';
-
+import { Footer, Header, Navigation } from '../components';
 import classes from './styles';
 
 const Layout = () => {
@@ -17,7 +15,7 @@ const Layout = () => {
     <Box sx={classes.layout}>
       <Navigation handleNavigation={handleNavigation} />
       <Header isOpenNavigation={isCollapseNavigation} />
-      <Box sx={classes.main(isCollapseNavigation)}>
+      <Box sx={classes.main(isCollapseNavigation)} bgcolor={'transparent'}>
         <Outlet />
       </Box>
       <Footer />

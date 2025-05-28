@@ -1,30 +1,31 @@
+import { IconButton } from '@mui/material';
 import { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { route } from '../../router/pagesData';
+import { useLocation, useNavigate } from 'react-router-dom';
 import IconArrowLeft from '../../assets/icons/iconArrowLeft.svg';
-import { Box, Drawer, IconButton, Typography } from '@mui/material';
-import imageDskLogo from '../../assets/images/imageDskLogo.svg';
 import iconDsk from '../../assets/icons/iconDSK.svg';
 import iconManager from '../../assets/icons/iconManager.svg';
+import imageDskLogo from '../../assets/images/imageDskLogo.svg';
+import { route } from '../../router/pagesData';
+import { Box, Drawer, Typography } from '../shared';
 import {
-  client,
-  reports,
-  dailyBanking,
-  plans,
   accounts,
+  client,
   clientData,
-  reportsData,
-  dailyBankingData,
-  dailyBankingPlansData,
-  dailyBankingAccountsData,
-  paymentOperations,
-  paymentOperationsData,
   creditProducts,
   creditProductsData,
+  dailyBanking,
+  dailyBankingAccountsData,
+  dailyBankingData,
+  dailyBankingPlansData,
+  paymentOperations,
+  paymentOperationsData,
+  plans,
+  reports,
+  reportsData,
   savingInvestments,
-  user,
   savingInvestmentsData,
   savingInvestmentsUserData,
+  user,
 } from './constants';
 import classes from './styles';
 
@@ -441,9 +442,10 @@ const Navigation = (props: NavigationProps) => {
   return (
     <>
       <Drawer
+        open={true}
+        onClose={() => {}}
         variant="permanent"
         anchor="left"
-        // onClose={() => setIsOpen(false)} // TODO: Add onClose event handler for small resolutions
         ModalProps={{
           BackdropProps: {
             sx: {

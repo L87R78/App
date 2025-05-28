@@ -1,7 +1,5 @@
-import Button from './buttons/Button';
-import Header from './header/Header';
-import Footer from './footer/Footer';
-import Navigation from './navigation/Navigation';
-import Modal from './modal/Modal';
-
-export { Button, Header, Navigation, Modal, Footer };
+export { default as Footer } from './footer/Footer';
+export { default as Header } from './header/Header';
+export { default as Modal } from './modal/Modal';
+export { default as Navigation } from './navigation/Navigation';
+export * from './shared';

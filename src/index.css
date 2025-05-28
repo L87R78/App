@@ -108,9 +108,17 @@
   --typography-h5-font-size: 1.75rem;
   --typography-h5-line-height: 1.75rem;
 
-  --typography-p-font-size: 1.25rem;
-  --typography-p-font-weight: 400;
-  --typography-p-line-height: 1.5rem;
+  --typography-body1-font-size: 1rem;
+  --typography-body1-font-weight: 400;
+  --typography-body1-line-height: 1.5rem;
+
+  --typography-body2-font-size: 0.85rem;
+  --typography-body2-font-weight: 500;
+  --typography-body2-line-height: 1.25rem;
+
+  --typography-caption-font-size: 0.5rem;
+  --typography-caption-font-weight: 300;
+  --typography-caption-line-height: 1rem;
 
   --clr-white: #ffffff;
 }

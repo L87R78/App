@@ -1,5 +1,4 @@
-import { Box } from '@mui/material';
-
+import { Box } from '@/components/shared';
 import classes from './styles';
 
 const ClientAccounts = () => {

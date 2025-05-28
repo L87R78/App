@@ -17,8 +17,7 @@ const classes = {
     margin: '0px 16px',
   },
   title: {
-    fontSize: '16px',
-    color: '#7D828B',
+    color: 'var(--clr-text-secondary)',
   },
 };
 

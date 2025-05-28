@@ -9,14 +9,14 @@ const classes = {
     justifyContent: 'center',
   },
   imageDsk: {
+    marginTop: '30px',
     width: '256px',
     height: '56px',
     cursor: 'pointer',
-    marginTop: '22px',
     transition: 'all 0.5s ease',
   },
   iconDsk: {
-    marginTop: '22px',
+    marginTop: '30px',
     width: '46px',
     height: '56px',
     cursor: 'pointer',
@@ -48,7 +48,6 @@ const classes = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    marginTop: '64px',
   },
   buttonShortNavigation: {
     marginTop: '24px',
@@ -68,7 +67,7 @@ const classes = {
     textAlign: 'center',
   },
   wrapperButtons: {
-    marginTop: '64px',
+    marginTop: '20px',
     padding: '16px',
   },
   wrapperButtonMenu: {

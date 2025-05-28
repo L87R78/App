@@ -1,6 +1,5 @@
-import { Box } from '@mui/material';
-
 import iconDSK from '../../assets/icons/iconDSK.svg';
+import { Box } from '../shared';
 
 import classes from './styles';
 
