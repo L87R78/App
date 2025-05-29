@@ -3,7 +3,7 @@ import axios, { AxiosError } from 'axios';
 
 import { ResponseStatus } from '../../common/constants';
 
-import { setSliceError } from '../errorSlice/errorSlice';
+import { setSliceError } from '../error/errorSlice';
 
 const addClient = createAsyncThunk(
   'onbording/addClient',

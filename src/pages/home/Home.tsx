@@ -1,10 +1,10 @@
 import { Box, Button, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '../../store/index';
-import { addOnbordingData } from '../../store/onbording/onbording.Slice';
+import { addOnbordingData } from '../../store/onbording/onbordingSlice';
 
-import classes from './styles';
 import { OnboardingStep } from '../../common/constants';
+import classes from './styles';
 
 const Home = () => {
   const dispatch = useDispatch<AppDispatch>();

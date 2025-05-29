@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import onbordingSlice from './onbording/onbording.Slice';
-import errorSlice from './errorSlice/errorSlice';
+import errorSlice from './error/errorSlice';
+import onbordingSlice from './onbording/onbordingSlice';
 
 const store = configureStore({
   reducer: {
