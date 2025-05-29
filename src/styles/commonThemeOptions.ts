@@ -5,42 +5,34 @@ export const commonThemeOptions = {
     h1: {
       fontSize: 'var(--typography-h1-font-size, 3.25rem)',
       fontWeight: 'var(--typography-h1-font-weight, 900)',
-      lineHeight: 'var(--typography-h1-line-height, 3rem)',
     },
     h2: {
       fontSize: 'var(--typography-h2-font-size, 3rem)',
       fontWeight: 'var(--typography-h2-font-weight, 700)',
-      lineHeight: 'var(--typography-h2-line-height, 2rem)',
     },
     h3: {
       fontSize: 'var(--typography-h3-font-size, 2.5rem)',
       fontWeight: 'var(--typography-h3-font-weight, 600)',
-      lineHeight: 'var(--typography-h3-line-height, 1.75rem)',
     },
     h4: {
       fontSize: 'var(--typography-h4-font-size, 2rem)',
       fontWeight: 'var(--typography-h4-font-weight, 400)',
-      lineHeight: 'var(--typography-h4-line-height, 2rem)',
     },
     h5: {
       fontSize: 'var(--typography-h5-font-size, 1.75rem)',
       fontWeight: 'var(--typography-h5-font-weight, 400)',
-      lineHeight: 'var(--typography-h5-line-height, 1.75rem)',
     },
     body1: {
       fontSize: 'var(--typography-body1-font-size, 1rem)',
       fontWeight: 'var(--typography-body1-font-weight, 400)',
-      lineHeight: 'var(--typography-body1-line-height, 1.5rem)',
     },
     body2: {
       fontSize: 'var(--typography-body2-font-size, 0.85rem)',
       fontWeight: 'var(--typography-body2-font-weight, 500)',
-      lineHeight: 'var(--typography-body2-line-height, 1.25rem)',
     },
     caption: {
       fontSize: 'var(--typography-caption-font-size, 0.5rem)',
       fontWeight: 'var(--typography-caption-font-weight, 300)',
-      lineHeight: 'var(--typography-caption-line-height, 1rem)',
     },
   },
   components: {
