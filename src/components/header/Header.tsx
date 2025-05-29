@@ -14,7 +14,7 @@ interface HeaderProps {
 const Header = (props: HeaderProps) => {
   const { isOpenNavigation } = props;
 
-  const [isOpenUserSettings, setIsOpenUserSettings] = useState(true);
+  const [isOpenUserSettings, setIsOpenUserSettings] = useState(false);
   const settingsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
