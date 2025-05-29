@@ -1,25 +1,28 @@
-import { Box, Select } from '@/components/ui';
-import { useI18nNamespaces } from '../../hooks';
+import { Box, Button, Typography } from '@mui/material';
+
 import classes from './styles';
 
 const Home = () => {
-  const { t, i18n } = useI18nNamespaces(['shared/common', 'pages/home']);
-
-  const handleChange = event => {
-    i18n.changeLanguage(event.target.value);
-  };
   return (
     <Box sx={classes.layout}>
-      <h1>{t('pleaseWait')}</h1>
-      <p>{t('pages/home:chart.servedCustomers')}</p>
-      <Select
-        value={i18n.language}
-        onChange={handleChange}
-        options={[
-          { label: 'English', value: 'en' },
-          { label: 'bulg', value: 'bg' },
-        ]}
-      />
+      <Typography sx={classes.title} variant="h1">
+        Welcome, Maria
+      </Typography>
+      <Typography sx={classes.description} variant="h2">
+        Успешен ден
+      </Typography>
+      <Box sx={classes.wrapperWaitingBox}>
+        <Typography sx={classes.textWaitingPeople} variant="h2">
+          Чакащи
+        </Typography>
+        <Typography sx={classes.textWaitingPeople} variant="h2">
+          2
+        </Typography>
+      </Box>
+      <Box sx={classes.wrapperActions}>
+        <Button variant="contained"> Следваш клиент </Button>
+        <Button variant="outlined"> Стартирай обслужване </Button>
+      </Box>
     </Box>
   );
 };
