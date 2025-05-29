@@ -1,8 +1,10 @@
+import { useEffect, useRef, useState } from 'react';
 import iconNotifications from '@/assets/icons/iconNotifications.svg';
 import imageAvatar from '@/assets/images/imageAvatar.svg';
 import { Box, Button, Typography } from '@/components/ui';
-import { useEffect, useRef, useState } from 'react';
+
 import classes from './styles';
+
 interface HeaderProps {
   isOpenNavigation: boolean;
 }
@@ -10,21 +12,25 @@ const Header = (props: HeaderProps) => {
   const { isOpenNavigation } = props;
   const [isOpenUserSettings, setIsOpenUserSettings] = useState(false);
   const settingsRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (settingsRef.current && !settingsRef.current.contains(event.target as Node)) {
         setIsOpenUserSettings(false);
       }
     };
+
     if (isOpenUserSettings) {
       document.addEventListener('mousedown', handleClickOutside);
     } else {
       document.removeEventListener('mousedown', handleClickOutside);
     }
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isOpenUserSettings]);
+
   return (
     <Box sx={classes.containerHeader(isOpenNavigation)}>
       <Box sx={classes.wrapperContent}>

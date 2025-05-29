@@ -1,8 +1,18 @@
 import { Box, Button, Typography } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import type { AppDispatch } from '../../store/index';
+import { addOnbordingData } from '../../store/onbording/onbording.Slice';
 
 import classes from './styles';
+import { OnboardingStep } from '../../common/constants';
 
 const Home = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleStartService = () => {
+    dispatch(addOnbordingData(OnboardingStep.StartService));
+  };
+
   return (
     <Box sx={classes.layout}>
       <Box sx={classes.containerWelcome}>
@@ -22,7 +32,9 @@ const Home = () => {
         </Box>
         <Box sx={classes.wrapperActions}>
           <Button variant="contained"> Следваш клиент </Button>
-          <Button variant="outlined"> Стартирай обслужване </Button>
+          <Button variant="outlined" onClick={handleStartService}>
+            Стартирай обслужване
+          </Button>
         </Box>
       </Box>
       <Box sx={classes.containerChart}>Chart - In progress...</Box>
