@@ -1,4 +1,35 @@
-import ExpandMoreOutlinedIcon from '../assets/icons/iconDown.svg';
+import { createSvgIconFromString } from '../components';
+
+const SelectIconDown = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z" fill="#52AE30"/>
+</svg>`;
+
+const commonInputRootStyles = {
+  borderRadius: 'var(--field-border-radius, 0.75rem)',
+  backgroundColor: 'var(--clr-bg-1, hsl(0, 0%, 100%))',
+  fontSize: 'var(--typography-body1-font-size, 1rem)',
+  '&.Mui-disabled': {
+    backgroundColor: 'var(--clr-bg-disabled, hsl(0, 0%, 95%))',
+    color: 'var(--clr-text-disabled, hsl(0, 0%, 75%))',
+  },
+};
+
+const commonNotchedOutlineStyles = {
+  borderColor: 'var(--clr-border-primary, hsl(219, 13%, 70%))',
+  borderRadius: 'var(--field-border-radius, 0.75rem)',
+};
+
+const commonFocusedStyles = {
+  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+    borderColor: 'var(--clr-primary)',
+  },
+};
+
+const commonErrorStyles = {
+  '&.Mui-error .MuiOutlinedInput-notchedOutline': {
+    borderColor: 'var(--clr-danger, #ff435a)',
+  },
+};
 
 export const commonThemeOptions = {
   typography: {
@@ -35,6 +66,11 @@ export const commonThemeOptions = {
       fontWeight: 'var(--typography-caption-font-weight, 300)',
     },
   },
+  palette: {
+    primary: {
+      main: '#52ae30',
+    },
+  },
   components: {
     MuiButton: {
       styleOverrides: {
@@ -42,6 +78,7 @@ export const commonThemeOptions = {
           borderRadius: 'var(--base-border-radius)',
           textTransform: 'none',
           backgroundColor: 'var(--clr-primary)',
+          color: 'var(--clr-button-text)',
           boxShadow: 'none',
           ':hover': {
             boxShadow: 'none',
@@ -74,50 +111,52 @@ export const commonThemeOptions = {
     },
     MuiSelect: {
       defaultProps: {
-        IconComponent: ExpandMoreOutlinedIcon,
+        IconComponent: createSvgIconFromString(SelectIconDown, 'Exapand down'),
+        MenuProps: {
+          disableScrollLock: true,
+          PaperProps: {
+            elevation: 0,
+          },
+          slotProps: {
+            backdrop: {
+              sx: {
+                backgroundColor: 'transparent',
+              },
+            },
+          },
+        },
       },
       styleOverrides: {
         root: {
-          '&.Mui-disabled': {
-            backgroundColor: 'var(--clr-bg-disabled, hsl(0, 0%, 95%))',
-            color: 'var(--clr-text-disabled, hsl(0, 0%, 75%))',
-            border: '1px solid var(--clr-border-disabled)',
+          ...commonInputRootStyles,
+          '&:hover:not(.Mui-disabled) .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'var(--clr-border-primary, hsl(219, 13%, 70%))',
           },
         },
         icon: {
           color: 'var(--clr-primary)',
+          '.Mui-disabled &': {
+            display: 'none',
+          },
         },
         select: {
-          backgroundColor: 'var(--clr-bg-1, hsl(0, 0%, 100%))',
-          borderRadius: 'var(--field-border-radius, 0.75rem)',
-          fontSize: 'var(--typography-body1-font-size,1rem)',
+          ...commonInputRootStyles,
         },
       },
     },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          borderRadius: 'var(--field-border-radius, 0.75rem)',
-          backgroundColor: 'var(--clr-bg-1, hsl(0, 0%, 100%))',
-          fontSize: 'var(--typography-body1-font-size,1rem)',
-
-          '&:hover .MuiOutlinedInput-notchedOutline': {
-            borderColor: 'var(--clr-border-primary, hsl(219, 13%, 70%))',
+          ...commonInputRootStyles,
+          '&:hover:not(.Mui-disabled) .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'var(--clr-primary) !important',
           },
           '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-            borderColor: 'var(--clr-border-primary, hsl(219, 13%, 70%))',
-          },
-          '&.Mui-error .MuiOutlinedInput-notchedOutline': {
-            borderColor: 'var(--clr-danger, #ff435a)',
-          },
-          '&.Mui-disabled': {
-            backgroundColor: 'var(--clr-bg-disabled, hsl(0, 0%, 95%))',
-            color: 'var(--clr-text-disabled, hsl(0, 0%, 75%))',
+            borderColor: 'var(--clr-primary) !important',
           },
         },
         notchedOutline: {
-          borderColor: 'var(--clr-border-primary, hsl(219, 13%, 70%))',
-          borderRadius: 'var(--field-border-radius, 0.75rem)',
+          ...commonNotchedOutlineStyles,
         },
       },
     },
@@ -221,24 +260,15 @@ export const commonThemeOptions = {
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-root': {
-            borderRadius: 'var(--field-border-radius, 0.75rem)',
-            backgroundColor: 'var(--clr-bg-1, hsl(0, 0%, 100%))',
-            fontSize: 'var(--typography-body1-font-size,1rem)',
-
-            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            ...commonInputRootStyles,
+            ...commonFocusedStyles,
+            ...commonErrorStyles,
+            '&:hover:not(.Mui-disabled) .MuiOutlinedInput-notchedOutline': {
               borderColor: 'var(--clr-border-primary, hsl(219, 13%, 70%))',
-            },
-            '&.Mui-error .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'var(--clr-danger, #ff435a)',
-            },
-            '&.Mui-disabled': {
-              backgroundColor: 'var(--clr-bg-disabled, hsl(0, 0%, 95%))',
-              color: 'var(--clr-text-disabled, hsl(0, 0%, 75%))',
             },
           },
           '& .MuiOutlinedInput-notchedOutline': {
-            borderColor: 'var(--clr-border-primary, hsl(219, 13%, 70%))',
-            borderRadius: 'var(--field-border-radius, 0.75rem)',
+            ...commonNotchedOutlineStyles,
           },
           '& .MuiInputLabel-root.Mui-disabled': {
             color: 'var(--clr-text-disabled, hsl(0, 0%, 75%))',
@@ -344,8 +374,8 @@ export const commonThemeOptions = {
         root: {
           backgroundColor: 'var(--tabs-fo-clr-bg, #ffffff)',
           padding: '12px 12px 0',
-          borderTopLeftRadius: '10px',
-          borderTopRightRadius: '10px',
+          borderTopLeftRadius: 'var( --tabs-fo-border-radius)',
+          borderTopRightRadius: 'var( --tabs-fo-border-radius)',
         },
         indicator: {
           display: 'none',
@@ -353,27 +383,130 @@ export const commonThemeOptions = {
       },
     },
     MuiTab: {
+      defaultProps: {
+        disableRipple: true,
+      },
       styleOverrides: {
         root: {
           textTransform: 'none',
           fontWeight: 400,
           color: 'var(--clr-text-primary, black)',
-          padding: '0.75rem',
-          border: '1px solid transparent',
-          borderTopLeftRadius: '10px',
-          borderTopRightRadius: '10px',
+          borderRadius: 'var( --tabs-fo-border-radius)',
           '&.Mui-selected': {
             fontWeight: 700,
             backgroundColor: 'var(--tabs-fo-tab-hover, #eef7ea)',
             color: 'var(--clr-text-primary, black)',
-
-            borderBottomLeftRadius: '10px',
-            borderBottomRightRadius: '10px',
           },
           '&.Mui-disabled': {
             color: 'hsl(0, 0%, 50%)',
             cursor: 'not-allowed',
           },
+        },
+      },
+    },
+    MuiDateCalendar: {
+      styleOverrides: {
+        root: {
+          borderRadius: 'var(--base-border-radius, 0.75rem)',
+          backgroundColor: 'var(--clr-bg-1, #fff)',
+          color: 'var(--clr-text-primary, #000)',
+          padding: '15px',
+        },
+      },
+    },
+    MuiPickersCalendarHeader: {
+      styleOverrides: {
+        labelContainer: {
+          fontWeight: 'bold',
+          fontSize: '1.1rem',
+        },
+      },
+    },
+    MuiDayCalendar: {
+      styleOverrides: {
+        weekDayLabel: {
+          fontWeight: 600,
+          fontSize: '0.9rem',
+          padding: '0.25rem 0',
+        },
+        header: {
+          backgroundColor: 'hsl(0, 0%, 95%)',
+          borderRadius: 'var(--base-border-radius, 0.5rem)',
+        },
+        weekContainer: {
+          justifyContent: 'space-between',
+        },
+        day: {
+          fontSize: '1.15rem',
+          borderRadius: '999px',
+          width: '36px',
+          height: '36px',
+          margin: '4px',
+          '&.Mui-selected': {
+            backgroundColor: 'var(--clr-primary)',
+            color: '#fff',
+            borderRadius: '999px',
+            border: '2px solid var(--clr-primary)',
+          },
+          '&.MuiPickersDay-dayWithMargin': {
+            margin: '4px',
+          },
+          '&.MuiPickersDay-today': {
+            border: '1px solid var(--clr-primary)',
+          },
+        },
+      },
+    },
+    MuiPickersDay: {
+      styleOverrides: {
+        root: {
+          fontSize: '0.9rem',
+          borderRadius: '999px',
+          width: '36px',
+          height: '36px',
+          margin: '4px',
+          '&.Mui-selected': {
+            backgroundColor: 'var(--clr-primary)',
+            color: '#fff',
+            border: '2px solid var(--clr-primary)',
+          },
+        },
+      },
+    },
+    MuiPickersPopper: {
+      styleOverrides: {
+        paper: {
+          borderRadius: 'var(--base-border-radius, 0.75rem)',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+          backgroundColor: 'var(--clr-bg-1, #fff)',
+        },
+      },
+    },
+    MuiPickersOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: 'var(--field-border-radius, 0.75rem)',
+          backgroundColor: 'var(--clr-bg-1, hsl(0, 0%, 100%))',
+          fontSize: '1rem',
+          boxShadow: 'none',
+
+          '&.Mui-disabled': {
+            backgroundColor: 'var(--clr-bg-disabled, hsl(0, 0%, 95%))',
+            color: 'var(--clr-text-disabled, hsl(0, 0%, 75%))',
+            pointerEvents: 'none',
+          },
+
+          '&:hover:not(.Mui-disabled) .MuiPickersOutlinedInput-notchedOutline': {
+            borderColor: 'var(--clr-primary)',
+          },
+
+          '&.Mui-focused .MuiPickersOutlinedInput-notchedOutline': {
+            borderColor: 'var(--clr-primary)',
+          },
+        },
+
+        notchedOutline: {
+          border: '1px solid var(--clr-border-primary, hsl(219, 13%, 70%))',
         },
       },
     },

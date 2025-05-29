@@ -1,0 +1,23 @@
+{
+	"betweenOwnAccounts": "Между собствени сметки",
+	"toBankAccount": "Към банкова сметка",
+	"fromAccount": "От сметка",
+	"toAccount": "Към сметка",
+	"transferTax": "Такса за превод",
+	"transfer": "Превод",
+	"transfers": "Преводи",
+	"complete": "Завърши",
+	"choseAccount": "Изберете сметка",
+	"balance": "Баланс",
+	"currentAccount": "Разплащателна сметка",
+	"savingsAccount": "Спестовна сметка",
+	"virtualAccount": "Виртуална сметка",
+	"creditAccount": "Кредитна сметка",
+	"details": "Детайли",
+	"currency": "Валута",
+	"amount": "Сума",
+	"reason": "Основание",
+	"valueDate": "Вальорна дата",
+	"selectAccount": "Изберете сметка",
+	"feeCollectionAccount": "Fee Collection Account"
+}

@@ -1,0 +1,40 @@
+{
+	"productGroups": {
+		"standardPCwithPlan": "Стандартна РС с план",
+		"currentAccountsFL": "Разплащателни сметки - ФЛ",
+		"savingsAccountsFL": "Спестовни сметки - ФЛ"
+	},
+	"products": {
+		"chooseProduct": "Избери продукт",
+		"standardPC": "Стандартна РС",
+		"RSDSKTeen": "РС ДСК Тийн",
+		"RScitizensCC": "РС граждани КК",
+		"PSOO": "ПСОО",
+		"DSKPulse": "ДСК Пулс",
+		"specialEscrowAccount": "Специална / Ескроу сметка",
+		"goldTradingAccount": "Търговия със злато по сметка"
+	},
+	"openingTypes": {
+		"choosePlan": "Избери план",
+		"basic": "Основен",
+		"forSalary": "За заплата",
+		"noRestrictions": "Няма ограничения",
+		"forYoungPeople": "За младежи",
+		"forPension": "За пенсия",
+		"premium": "Премиум"
+	},
+	"documents": {
+		"title": "Свързани документи - подпис и печат",
+		"contract": "Рамков договор за предоставяне на платежни услуги",
+		"additionalAgreement": "Допълнително споразумение за откриване и обслужване на РС",
+		"declaration": "Декларация за приети общи условия",
+		"investorNewsletter": "Информационен бюлетин на вложителите"
+	},
+	"modal": {
+		"documentsHaveBeenSignedSuccessfully": "Документите са подписани успешно!"
+	},
+	"missingAccoungData": {
+		"errorText": "Липсващи данни за акаунта",
+		"description": "Продължете с откриването на сметка"
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"clientInfo": "Client Information",
+	"clientName": "Client Name",
+	"clientNumber": "Client Number",
+	"nationality": "Nationality",
+	"clientType": "Client Type",
+	"telephone": "Telephone number",
+	"email": "Email"
+}

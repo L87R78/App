@@ -1,6 +1,7 @@
 const classes = {
   layout: {
     height: '100%',
+    overflow: 'scroll',
   },
 };
 

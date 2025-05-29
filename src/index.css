@@ -1,4 +1,16 @@
 @import 'tailwindcss';
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--clr-bg-2, hsl(150, 8%, 97%));
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--clr-bg-4, hsl(150, 8%, 92%));
+  border-radius: 999px;
+}
 
 :root {
   /* === Base === */
@@ -87,6 +99,7 @@
   --clr-text-nav-active: var(--clr-text-primary);
   --clr-text-primary: hsl(219, 5%, 9%);
   --clr-text-secondary: hsl(219, 5%, 50%);
+  --clr-button-text: var(--clr-white);
 
   /* === Typography === */
   --typography-h1-font-size: 3.25rem;

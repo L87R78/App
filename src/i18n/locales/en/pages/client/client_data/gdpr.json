@@ -1,0 +1,97 @@
+{
+	"filled": "Filled",
+	"signed": "Signed",
+	"DOPKdeclaration": "DOPK Declaration",
+	"docsWarning": "Documents arent filled and signed. Please fill and sign before you continue!",
+	"survey": "Survey",
+	"peps": "PEP’s",
+	"eSign": "E-Signature",
+	"print": "Print",
+	"documents": "document(s)",
+	"sendingForSignature": "Sending for signature...",
+	"allDocsAreFilled": "All documents are filled!",
+	"continueToSignOrPrint": "Continue to sign or print",
+	"toSigning": "To signing",
+	"docsAreBeingSigned": "Documents are being signed",
+	"docsSignedSuccessfuly": "Documents are signed successfully",
+	"toServingCustomer": "To serving customer",
+	"gdprPage": {
+		"heading1": "Information on the processing of personal data of individuals by \"DSK BANK\" AD",
+		"heading2": "CONSENT PARAMETERS",
+		"checkbox1": "Bank games and raffles with prizes. /for this purpose, names, personal ID number, phone number, email are processed/",
+		"checkbox2": "Creation of personalized content in social media and promotional messages on communication platforms (Viber, WhatsApp, Facebook, Twitter, Instagram, Google's partner network, etc.) based on provided contact details (email and phone number)",
+		"checkbox3": "Direct marketing of products and services of third parties, including insurance companies and companies from the corporate group of DSK Bank."
+	},
+	"declaration": {
+		"heading": "DECLARATION",
+		"subheading": "for the purposes of the automatic exchange of financial information under Art. 142t, para. 1, item 1 of the Tax and Social Security Procedure Code (TSSPC) for individuals",
+		"residenceAddress": "Residence Address",
+		"matchesPermanentAddress": "matches permanent address",
+		"jurysdictionTaxNumber": "Jurisdiction of tax residency and tax identification number",
+		"jurysdictionTaxGoals": "Jurisdiction where you are a tax resident",
+		"taxIdFromJurysdiction": "Tax identification number issued by this jurisdiction",
+		"residentOfTax": "The account holder is a tax resident of more than one jurisdiction",
+		"isntSigned": "The declaration is not signed by the account holder, please specify:",
+		"nameOfThePersonWhoSignedTheDeclaration": "Name of the person who signed the declaration",
+		"inHisCapacity": "In his capacity as"
+	},
+	"surveyPage": {
+		"heading0": "Appendix No. 1",
+		"heading1": "QUESTIONNAIRE",
+		"heading2": "FOR REGISTRATION OF A NATURAL PERSON IN DSK BANK AD",
+		"jobSection": {
+			"heading": "1. PROFESSION / POSITION:",
+			"option1": "EMPLOYEE",
+			"option2": "PENSIONER",
+			"option3": "FREELANCER",
+			"option4": "STUDENT",
+			"option5": "SELF-EMPLOYED / BUSINESS OWNER",
+			"option6": "UNEMPLOYED"
+		},
+		"financesSection": {
+			"heading": "2. INDICATE THE SOURCE OF FUNDS FOR OPERATIONS ON THE ACCOUNT:",
+			"option1": "SALARY",
+			"option2": "DIVIDENDS",
+			"option3": "SOCIAL PAYMENTS",
+			"option4": "SCHOLARSHIP",
+			"option5": "RENT",
+			"option6": "INHERITANCE",
+			"option7": "PENSION",
+			"option8": "FEE / HONORARIUM"
+		},
+		"goalOfAfiliationSection": {
+			"heading": "3. INDICATE THE PURPOSE OF BUSINESS RELATIONSHIP WITH THE BANK:",
+			"option1": "CURRENT ACCOUNT",
+			"option2": "CASH TRANSACTIONS",
+			"option3": "FUNDS TRANSFER",
+			"option4": "LOANS",
+			"option5": "DEPOSITING FUNDS"
+		},
+		"documentSection": {
+			"heading": "THE PRESENTED DOCUMENTS AND DATA WERE VERIFIED THROUGH THE FOLLOWING METHODS:",
+			"option1": "REFERENCE IN THE MINISTRY OF INTERIOR / REGIX WEBSITE",
+			"option2": "VISIT TO THE PLACE OF BUSINESS ACTIVITY",
+			"option3": "REFERENCE IN COMMERCIAL REGISTER, APIS, NRA PUBLIC REGISTER",
+			"option4": "CONTACT BY PHONE, POST, OR EMAIL"
+		},
+		"methodOfFilling": {
+			"heading": "METHOD OF COMPLETION:",
+			"option1": "REMOTE (outside a bank office)",
+			"option2": "ELECTRONIC (e-channels and e-signatures)",
+			"option3": "IN PERSON AT A BANK OFFICE"
+		}
+	},
+	"pepsPage": {
+		"heading1": "Appendix No. 4",
+		"heading2": "DECLARATION FOR CLIENT - INDIVIDUAL UNDER ART. 42, PARA. 2, ITEM 2 OF THE MEASURES AGAINST",
+		"heading3": "MONEY LAUNDERING ACT (MLMA)",
+		"filledByAuthPerson": "To be filled by an authorized person",
+		"agreement1": "*The account holder does not hold or has not held in the past year a position listed in items 1–11 of this declaration",
+		"agreement2": "*The account holder holds or has held in the past year, prior to signing this declaration, a position listed in items 1–11. Please specify the position:",
+		"agreement3": "Is not or has not been a related person in the past year to a person listed in items 1–11 of this declaration",
+		"agreement4": "Is or has been a related person in the past year to a person listed in items 1–11 of this declaration. Please specify name, Personal ID number/date of birth (for foreigners), and the position:",
+		"listOfCases": "1. Head of state, head of government, minister, deputy minister or assistant minister;<br> 2. Member of parliament or of another legislative body;<br> 3. Member of a constitutional court, supreme court, or other high-level judicial body whose decisions are not subject to further appeal, except under exceptional circumstances;<br> 4. Member of the court of auditors;<br> 5. Member of the governing body of a central bank;<br> 6. Ambassador or head of a diplomatic mission;<br> 7. Senior officer in the armed forces;<br> 8. Member of an administrative, management, or supervisory body of a state-owned enterprise or company with sole state ownership;<br> 9. Mayor or deputy mayor of a municipality, district, or chairman of a municipal council;<br> 10. Member of a governing body of a political party;<br> 11. Head or deputy head of an international organization, member of a governing or supervisory body in an international organization, or a person holding an equivalent function in such an organization.<br>",
+		"declaration": "I DECLARE THAT THE FUNDS TO BE OPERATED THROUGH THE ACCOUNTS, IN CONNECTION WITH MY PROPERTY STATUS, HAVE THE FOLLOWING ORIGIN*:",
+		"declarationSubtext": "(*To be filled only for persons falling into the category of politically exposed persons or related persons)"
+	}
+}

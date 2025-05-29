@@ -1,4 +1,4 @@
-import { Box } from '@/components/shared';
+import { Box } from '@/components/ui';
 import classes from './styles';
 
 const Transfers = () => {

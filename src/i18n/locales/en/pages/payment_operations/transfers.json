@@ -1,0 +1,23 @@
+{
+	"betweenOwnAccounts": "Between own accounts",
+	"toBankAccount": "To bank account",
+	"fromAccount": "From account",
+	"toAccount": "To account",
+	"transferTax": "Fee",
+	"transfer": "Transfer",
+	"transfers": "Transfers",
+	"complete": "Complete",
+	"choseAccount": "Choose account",
+	"balance": "Balance",
+	"currentAccount": "Current account",
+	"savingsAccount": "Savings account",
+	"virtualAccount": "Virtual account",
+	"creditAccount": "Credit account",
+	"details": "Details",
+	"currency": "Currency",
+	"amount": "Amount",
+	"reason": "Reason",
+	"valueDate": "Date of execution",
+	"selectAccount": "Select account",
+	"feeCollectionAccount": "Fee Collection Account"
+}

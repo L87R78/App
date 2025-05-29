@@ -1,0 +1,21 @@
+{
+	"noClientData": "No client data",
+	"doYouWantToCreateClient": "Do you want to create new client?",
+	"validationScannedDocument": "Validation of scanned document",
+	"validationMVRCheck": "Check with Ministry of Interior",
+	"validationMVRValid": "The document is valid in the Ministry of Interior database.",
+	"customerDataSaved": "Customer data is saved. Risk classification - {{riskClass}}. Assigned customer number - <b>{{customerNumber}}</b>",
+	"customerDataSavedFirstText": "Customer data is saved!",
+	"customerDataSavedSecondText": "Risk classification -",
+	"customerDataSavedThirdText": "Assigned customer number -",
+	"continueToContactDetails": "Continue to contact details",
+	"newClient": "New client",
+	"createNewClient": "Create new client",
+	"mrzOcr": "MRZ-OCR",
+	"uvElements": "UV elements ",
+	"scanData": "Scan data",
+	"dbData": "Database data",
+	"communicationAddress": "Communication address",
+	"checkAgain": "Check again",
+	"checkingAgain": "Checking documents again..."
+}

@@ -1,0 +1,6 @@
+{
+	"enterSMScode": "Въведете SMS код",
+	"confirmationCode": "Кодът за потвърждение беше изпратен на: {{phoneNumber}}",
+	"phoneNumberValidated": "Телефонният номер е валидиран",
+	"emailVerificationLink": "Изпратен имейл с линк за верификация"
+}

@@ -1,0 +1,40 @@
+{
+	"productGroups": {
+		"standardPCwithPlan": "Standard Current Accounts with Plan",
+		"currentAccountsFL": "Current Accounts - Individuals",
+		"savingsAccountsFL": "Savings Accounts - Individuals"
+	},
+	"products": {
+		"chooseProduct": "Choose a product",
+		"standardPC": "Standard CA",
+		"RSDSKTeen": "CA DSK Teen",
+		"RScitizensCC": "CA Citizens CC",
+		"PSOO": "PSOO",
+		"DSKPulse": "DSK Pulse",
+		"specialEscrowAccount": "Special / Escrow Account",
+		"goldTradingAccount": "Gold Trading Account"
+	},
+	"openingTypes": {
+		"choosePlan": "Choose plan",
+		"basic": "Basic",
+		"forSalary": "For salary",
+		"noRestrictions": "No restrictions",
+		"forYoungPeople": "For young people",
+		"forPension": "For pension",
+		"premium": "Premium"
+	},
+	"documents": {
+		"title": "Related documents - signature and print",
+		"contract": "Framework contract for the provision of payment services",
+		"additionalAgreement": "Additional agreement for the opening and maintenance of PCs",
+		"declaration": "Declaration of accepted general terms and conditions",
+		"investorNewsletter": "Depositors information bulletin"
+	},
+	"modal": {
+		"documentsHaveBeenSignedSuccessfully": "The documents have been signed successfully!"
+	},
+	"missingAccoungData": {
+		"errorText": "Missing account data",
+		"description": "Proceed to open an account"
+	}
+}

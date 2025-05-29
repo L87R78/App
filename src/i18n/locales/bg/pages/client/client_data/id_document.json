@@ -1,0 +1,21 @@
+{
+	"noClientData": "Липсват клиентски данни",
+	"doYouWantToCreateClient": "Желаете ли да създадете нов клиент?",
+	"validationScannedDocument": "Валидация на сканиран документ",
+	"validationMVRCheck": "Проверка в МВР",
+	"validationMVRValid": "Документът е валиден в базата на МВР",
+	"customerDataSaved": "Данните за клиента са запазени. Рискова категория - {riskClass}. Клиентски номер - {customerNumber}",
+	"customerDataSavedFirstText": "Данните за клиента се запазени!",
+	"customerDataSavedSecondText": "Класификация на риска -",
+	"customerDataSavedThirdText": "Присвоен клиентски номер -",
+	"continueToContactDetails": "Продължете към данни за контакт",
+	"newClient": "Нов клиент",
+	"createNewClient": "Създаване на нов клиент",
+	"mrzOcr": "MRZ-OCR",
+	"uvElements": "UV елементи",
+	"scanData": "Сканирани данни",
+	"dbData": "Данни от базата данни",
+	"communicationAddress": "Адрес за кореспонденция",
+	"checkAgain": "Провери отново",
+	"checkingAgain": "Извършва се проверка..."
+}

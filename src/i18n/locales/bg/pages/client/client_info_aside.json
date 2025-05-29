@@ -1,0 +1,9 @@
+{
+	"clientInfo": "Информация за клиента",
+	"clientName": "Име на клиента",
+	"clientNumber": "Клиентски номер",
+	"nationality": "Националност",
+	"clientType": "Тип клиент",
+	"telephone": "Телефонен номер",
+	"email": "Имейл"
+}

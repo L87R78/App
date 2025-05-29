@@ -1,0 +1,6 @@
+{
+	"enterSMScode": "Enter SMS code",
+	"confirmationCode": "The confirmation code has been sent to: {{phoneNumber}}",
+	"phoneNumberValidated": "Phone number validated",
+	"emailVerificationLink": "Email sent with verification link"
+}
