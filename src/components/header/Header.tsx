@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 
 import { Box, Button, Typography } from '../shared';
 
-import iconManager from '@/assets/icons/iconManager.svg';
+import iconNotifications from '@/assets/icons/iconNotifications.svg';
+import imageAvatar from '@/assets/images/imageAvatar.svg';
 
 import classes from './styles';
 
@@ -42,7 +43,7 @@ const Header = (props: HeaderProps) => {
           sx={classes.wrapperAvatar}
           onClick={() => setIsOpenUserSettings(!isOpenUserSettings)}
         >
-          <Box component="img" sx={classes.iconAvatar} src={iconManager} />
+          <Box component="img" sx={classes.iconAvatar} src={imageAvatar} />
           <Box>
             <Typography variant="h3" sx={classes.name}>
               Мария Петрова
@@ -54,22 +55,19 @@ const Header = (props: HeaderProps) => {
           {isOpenUserSettings && (
             <Box sx={classes.wrapperUserSettings}>
               <Box sx={classes.wrapperRow}>
-                <Box component="img" sx={classes.iconAvatar} src={iconManager} />
-
+                <Box component="img" sx={classes.iconAvatar} src={iconNotifications} />
                 <Typography variant="h4" sx={classes.settingsText}>
                   Settings
                 </Typography>
               </Box>
               <Box sx={classes.wrapperRow}>
-                <Box component="img" sx={classes.iconAvatar} src={iconManager} />
-
+                <Box component="img" sx={classes.iconAvatar} src={iconNotifications} />
                 <Typography variant="h4" sx={classes.settingsText}>
                   Favorites
                 </Typography>
               </Box>
               <Box sx={classes.wrapperRow}>
-                <Box component="img" sx={classes.iconAvatar} src={iconManager} />
-
+                <Box component="img" sx={classes.iconAvatar} src={iconNotifications} />
                 <Typography variant="h4" sx={classes.settingsText}>
                   Log Out
                 </Typography>
@@ -78,7 +76,7 @@ const Header = (props: HeaderProps) => {
           )}
         </Box>
 
-        <Box component="img" sx={classes.iconNotifications} src={iconManager} />
+        <Box component="img" sx={classes.iconNotifications} src={iconNotifications} />
         <Button variant="contained" color="primary" size="small">
           Завърши услуга
         </Button>
