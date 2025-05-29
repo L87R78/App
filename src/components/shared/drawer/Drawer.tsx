@@ -1,4 +1,4 @@
-import CloseIcon from '@mui/icons-material/Close';
+// import CloseIcon from '@mui/icons-material/Close';
 import { Box, IconButton, Drawer as MuiDrawer, type DrawerProps } from '@mui/material';
 import React, { type ReactNode } from 'react';
 import Typography from '../typography/Typography';
@@ -46,11 +46,7 @@ const Drawer: React.FC<Props> = ({
             {title}
           </Typography>
         )}
-        {isCloseAvailable && (
-          <IconButton onClick={onClose}>
-            <CloseIcon />
-          </IconButton>
-        )}
+        {isCloseAvailable && <IconButton onClick={onClose}>{/* <CloseIcon /> */}X</IconButton>}
       </Box>
       <Box>{children}</Box>
     </MuiDrawer>

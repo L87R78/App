@@ -1,10 +1,16 @@
 import { IconButton } from '@mui/material';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import IconArrowLeft from '../../assets/icons/iconArrowLeft.svg';
-import iconDsk from '../../assets/icons/iconDSK.svg';
-import iconManager from '../../assets/icons/iconManager.svg';
-import imageDskLogo from '../../assets/images/imageDskLogo.svg';
+
+import IconArrowLeft from '@/assets/icons/iconArrowLeft.svg';
+import iconClient from '@/assets/icons/iconClient.svg';
+import iconCoinsHand from '@/assets/icons/iconCoinsHand.svg';
+import iconCreditCard from '@/assets/icons/iconCreditCard.svg';
+import iconPiggyBank from '@/assets/icons/iconPiggyBank.svg';
+import iconSwitchHorizontal from '@/assets/icons/iconSwitchHorizontal.svg';
+
+import iconDsk from '@/assets/icons/iconDSK.svg';
+import imageDskLogo from '@/assets/images/imageDskLogo.svg';
 import { route } from '../../router/pagesData';
 import { Box, Drawer, Typography } from '../shared';
 import {
@@ -70,13 +76,13 @@ const Navigation = (props: NavigationProps) => {
     route && navigate(route);
   };
 
-  const handleRenderFirstButton = (title: string, isOpen: boolean) => {
+  const handleRenderFirstButton = (title: string, isOpen: boolean, icon: string) => {
     return (
       <>
         <IconButton sx={classes.iconArrowMenu(isOpen)}>
           <img src={IconArrowLeft} alt="" />
         </IconButton>
-        <Box sx={classes.menuIcon} component="img" src={iconManager} />
+        <Box sx={classes.menuIcon} component="img" src={icon} />
         <Typography sx={classes.menuFirstTitle} variant="h5">
           {title}
         </Typography>
@@ -128,22 +134,24 @@ const Navigation = (props: NavigationProps) => {
                   }));
                 }}
               >
-                {handleRenderFirstButton(client, clientButtons.isClientItems)}
+                {handleRenderFirstButton(client, clientButtons.isClientItems, iconClient)}
               </Box>
             </Box>
 
             {clientButtons.isClientItems && (
               <Box sx={classes.wrapperItems}>
                 <>
-                  {clientData.map(item => {
+                  {clientData.map((item, index) => {
                     return (
-                      <Typography
-                        onClick={() => handleNavigate(item.path)}
-                        sx={classes.menuItem(Boolean(item.path.length), pathname === item.path)}
-                        variant="h5"
-                      >
-                        {item.title}
-                      </Typography>
+                      <Fragment key={index}>
+                        <Typography
+                          onClick={() => handleNavigate(item.path)}
+                          sx={classes.menuItem(Boolean(item.path.length), pathname === item.path)}
+                          variant="h5"
+                        >
+                          {item.title}
+                        </Typography>
+                      </Fragment>
                     );
                   })}
 
@@ -163,17 +171,19 @@ const Navigation = (props: NavigationProps) => {
                     </Box>
                     {clientButtons.isReportItems && (
                       <Box sx={classes.wrapperItems}>
-                        {reportsData.map(item => {
+                        {reportsData.map((item, index) => {
                           return (
-                            <Typography
-                              sx={classes.menuItem(
-                                Boolean(item.path.length),
-                                pathname === item.path
-                              )}
-                              variant="h5"
-                            >
-                              {item.title}
-                            </Typography>
+                            <Fragment key={index}>
+                              <Typography
+                                sx={classes.menuItem(
+                                  Boolean(item.path.length),
+                                  pathname === item.path
+                                )}
+                                variant="h5"
+                              >
+                                {item.title}
+                              </Typography>
+                            </Fragment>
                           );
                         })}
                       </Box>
@@ -196,7 +206,11 @@ const Navigation = (props: NavigationProps) => {
                   }));
                 }}
               >
-                {handleRenderFirstButton(dailyBanking, dailyBankingButtons.isDailyBankingItems)}
+                {handleRenderFirstButton(
+                  dailyBanking,
+                  dailyBankingButtons.isDailyBankingItems,
+                  iconCoinsHand
+                )}
               </Box>
             </Box>
             {dailyBankingButtons.isDailyBankingItems && (
@@ -217,14 +231,19 @@ const Navigation = (props: NavigationProps) => {
                   </Box>
                   {dailyBankingButtons.isPlanItems && (
                     <Box sx={classes.wrapperItems}>
-                      {dailyBankingPlansData.map(item => {
+                      {dailyBankingPlansData.map((item, index) => {
                         return (
-                          <Typography
-                            sx={classes.menuItem(Boolean(item.path.length), pathname === item.path)}
-                            variant="h5"
-                          >
-                            {item.title}
-                          </Typography>
+                          <Fragment key={index}>
+                            <Typography
+                              sx={classes.menuItem(
+                                Boolean(item.path.length),
+                                pathname === item.path
+                              )}
+                              variant="h5"
+                            >
+                              {item.title}
+                            </Typography>
+                          </Fragment>
                         );
                       })}
                     </Box>
@@ -246,27 +265,34 @@ const Navigation = (props: NavigationProps) => {
                   </Box>
                   {dailyBankingButtons.isAccountItems && (
                     <Box sx={classes.wrapperItems}>
-                      {dailyBankingAccountsData.map(item => {
+                      {dailyBankingAccountsData.map((item, index) => {
                         return (
-                          <Typography
-                            sx={classes.menuItem(Boolean(item.path.length), pathname === item.path)}
-                            variant="h5"
-                          >
-                            {item.title}
-                          </Typography>
+                          <Fragment key={index}>
+                            <Typography
+                              sx={classes.menuItem(
+                                Boolean(item.path.length),
+                                pathname === item.path
+                              )}
+                              variant="h5"
+                            >
+                              {item.title}
+                            </Typography>
+                          </Fragment>
                         );
                       })}
                     </Box>
                   )}
                 </Box>
-                {dailyBankingData.map(item => {
+                {dailyBankingData.map((item, index) => {
                   return (
-                    <Typography
-                      sx={classes.menuItem(Boolean(item.path.length), pathname === item.path)}
-                      variant="h5"
-                    >
-                      {item.title}
-                    </Typography>
+                    <Fragment key={index}>
+                      <Typography
+                        sx={classes.menuItem(Boolean(item.path.length), pathname === item.path)}
+                        variant="h5"
+                      >
+                        {item.title}
+                      </Typography>
+                    </Fragment>
                   );
                 })}
               </Box>
@@ -284,21 +310,24 @@ const Navigation = (props: NavigationProps) => {
               >
                 {handleRenderFirstButton(
                   paymentOperations,
-                  paymentOperationsButtons.isPaymentOperations
+                  paymentOperationsButtons.isPaymentOperations,
+                  iconSwitchHorizontal
                 )}
               </Box>
             </Box>
             {paymentOperationsButtons.isPaymentOperations && (
               <Box sx={classes.wrapperItems}>
-                {paymentOperationsData.map(item => {
+                {paymentOperationsData.map((item, index) => {
                   return (
-                    <Typography
-                      onClick={() => handleNavigate(item.path)}
-                      sx={classes.menuItem(Boolean(item.path.length), pathname === item.path)}
-                      variant="h5"
-                    >
-                      {item.title}
-                    </Typography>
+                    <Fragment key={index}>
+                      <Typography
+                        onClick={() => handleNavigate(item.path)}
+                        sx={classes.menuItem(Boolean(item.path.length), pathname === item.path)}
+                        variant="h5"
+                      >
+                        {item.title}
+                      </Typography>
+                    </Fragment>
                   );
                 })}
               </Box>
@@ -316,20 +345,23 @@ const Navigation = (props: NavigationProps) => {
               >
                 {handleRenderFirstButton(
                   creditProducts,
-                  creditProductsButtons.isCreditProductsButtons
+                  creditProductsButtons.isCreditProductsButtons,
+                  iconCreditCard
                 )}
               </Box>
             </Box>
             {creditProductsButtons.isCreditProductsButtons && (
               <Box sx={classes.wrapperItems}>
-                {creditProductsData.map(item => {
+                {creditProductsData.map((item, index) => {
                   return (
-                    <Typography
-                      sx={classes.menuItem(Boolean(item.path.length), pathname === item.path)}
-                      variant="h5"
-                    >
-                      {item.title}
-                    </Typography>
+                    <Fragment key={index}>
+                      <Typography
+                        sx={classes.menuItem(Boolean(item.path.length), pathname === item.path)}
+                        variant="h5"
+                      >
+                        {item.title}
+                      </Typography>
+                    </Fragment>
                   );
                 })}
               </Box>
@@ -348,7 +380,8 @@ const Navigation = (props: NavigationProps) => {
               >
                 {handleRenderFirstButton(
                   savingInvestments,
-                  savingInvestmentsButtons.isSavingInvestments
+                  savingInvestmentsButtons.isSavingInvestments,
+                  iconPiggyBank
                 )}
               </Box>
             </Box>
@@ -374,28 +407,35 @@ const Navigation = (props: NavigationProps) => {
                   </Box>
                   {savingInvestmentsButtons.isSavingInvestmentsUser && (
                     <Box sx={classes.wrapperItems}>
-                      {savingInvestmentsUserData.map(item => {
+                      {savingInvestmentsUserData.map((item, index) => {
                         return (
-                          <Typography
-                            sx={classes.menuItem(Boolean(item.path.length), pathname === item.path)}
-                            variant="h5"
-                          >
-                            {item.title}
-                          </Typography>
+                          <Fragment key={index}>
+                            <Typography
+                              sx={classes.menuItem(
+                                Boolean(item.path.length),
+                                pathname === item.path
+                              )}
+                              variant="h5"
+                            >
+                              {item.title}
+                            </Typography>
+                          </Fragment>
                         );
                       })}
                     </Box>
                   )}
                 </Box>
 
-                {savingInvestmentsData.map(item => {
+                {savingInvestmentsData.map((item, index) => {
                   return (
-                    <Typography
-                      sx={classes.menuItem(Boolean(item.path.length), pathname === item.path)}
-                      variant="h5"
-                    >
-                      {item.title}
-                    </Typography>
+                    <Fragment key={index}>
+                      <Typography
+                        sx={classes.menuItem(Boolean(item.path.length), pathname === item.path)}
+                        variant="h5"
+                      >
+                        {item.title}
+                      </Typography>
+                    </Fragment>
                   );
                 })}
               </Box>
@@ -404,32 +444,48 @@ const Navigation = (props: NavigationProps) => {
         </>
       ) : (
         <Box sx={classes.wrapperShortNavigation}>
-          <Box sx={classes.buttonShortNavigation}>
-            <Box component="img" src={iconManager} onClick={() => handleNavigate(route.home)} />
+          <Box sx={classes.buttonShortNavigation(clientButtons.isClientItems)}>
+            <Box component="img" src={iconClient} onClick={() => handleNavigate(route.home)} />
             <Typography sx={classes.menuShortTitle} variant="h5">
               {client}
             </Typography>
           </Box>
-          <Box sx={classes.buttonShortNavigation}>
-            <Box component="img" src={iconManager} onClick={() => handleNavigate(route.home)} />
+          <Box sx={classes.buttonShortNavigation(false)}>
+            <Box
+              component="img"
+              src={iconCoinsHand}
+              onClick={() => handleNavigate(route.dailyBanking)}
+            />
             <Typography sx={classes.menuShortTitle} variant="h5">
               {dailyBanking}
             </Typography>
           </Box>
-          <Box sx={classes.buttonShortNavigation}>
-            <Box component="img" src={iconManager} onClick={() => handleNavigate(route.home)} />
+          <Box sx={classes.buttonShortNavigation(paymentOperationsButtons.isPaymentOperations)}>
+            <Box
+              component="img"
+              src={iconSwitchHorizontal}
+              onClick={() => handleNavigate(route.paymentOperations)}
+            />
             <Typography sx={classes.menuShortTitle} variant="h5">
               {paymentOperations}
             </Typography>
           </Box>
-          <Box sx={classes.buttonShortNavigation}>
-            <Box component="img" src={iconManager} onClick={() => handleNavigate(route.home)} />
+          <Box sx={classes.buttonShortNavigation(false)}>
+            <Box
+              component="img"
+              src={iconCreditCard}
+              onClick={() => handleNavigate(route.creditProducts)}
+            />
             <Typography sx={classes.menuShortTitle} variant="h5">
               {creditProducts}
             </Typography>
           </Box>
-          <Box sx={classes.buttonShortNavigation}>
-            <Box component="img" src={iconManager} onClick={() => handleNavigate(route.home)} />
+          <Box sx={classes.buttonShortNavigation(false)}>
+            <Box
+              component="img"
+              src={iconPiggyBank}
+              onClick={() => handleNavigate(route.savingInvestments)}
+            />
             <Typography sx={classes.menuShortTitle} variant="h5">
               {savingInvestments}
             </Typography>
@@ -459,7 +515,7 @@ const Navigation = (props: NavigationProps) => {
         slotProps={{
           paper: {
             sx: {
-              width: isOpen ? '340px' : '130px',
+              width: isOpen ? '315px' : '130px',
               transition: 'all 0.5s ease',
               borderRadius: '0px 24px 24px 0',
               boxShadow: '0px 8.834px 26.503px 0px rgba(73, 92, 136, 0.15)',

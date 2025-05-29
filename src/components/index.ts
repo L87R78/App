@@ -1,5 +1,4 @@
 export { default as Footer } from './footer/Footer';
 export { default as Header } from './header/Header';
-export { default as Modal } from './modal/Modal';
 export { default as Navigation } from './navigation/Navigation';
 export * from './shared';

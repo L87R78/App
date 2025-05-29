@@ -1,11 +1,12 @@
 const classes = {
-  container: {
+  container: (isFocused: boolean) => ({
     display: 'flex',
     padding: '8px 24px',
     height: '48px',
-    border: '1px solid #DDE0E3',
+    border: `1px solid ${isFocused ? 'green' : '#DDE0E3'}`,
     borderRadius: '12px',
-  },
+  }),
+
   wrapperSelect: {
     display: 'flex',
     alignItems: 'center',

@@ -32,7 +32,7 @@ const classes = {
   iconButton: (isOpen: boolean) => ({
     position: 'fixed',
     top: '85px',
-    left: isOpen ? '322px' : '112px',
+    left: isOpen ? '297px' : '112px',
     borderRadius: '8px',
     border: '1px solid #CACED5',
     background: '#fff',
@@ -49,7 +49,7 @@ const classes = {
     flexDirection: 'column',
     alignItems: 'center',
   },
-  buttonShortNavigation: {
+  buttonShortNavigation: (isActive: boolean) => ({
     marginTop: '24px',
     width: '60%',
     display: 'flex',
@@ -57,12 +57,12 @@ const classes = {
     alignItems: 'center',
     padding: '8px',
     borderRadius: '8px',
-    border: '1px solid #CACED5',
+    background: isActive ? '#eef7ea' : '#fff',
     cursor: 'pointer',
-  },
+  }),
   menuShortTitle: {
     marginTop: '8px',
-    fontSize: '14px',
+    fontSize: '12px',
     fontWeight: 'bold',
     textAlign: 'center',
   },

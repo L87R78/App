@@ -16,6 +16,7 @@ export { default as Grid } from './layout/grid/Grid';
 export { default as Stack } from './layout/stack/Stack';
 export { default as Link } from './link/Link';
 export { default as List } from './list/List';
+export { default as Modal } from './modal/Modal';
 export { default as Select } from './select/Select';
 export { default as Skeleton } from './skeleton/Skeleton';
 export { default as Snackbar } from './snackbar/Snackbar';

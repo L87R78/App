@@ -1,4 +1,3 @@
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
   AccordionDetails,
   AccordionSummary,
@@ -33,7 +32,7 @@ const Accordion: React.FC<Props> = ({
       square
       {...props}
     >
-      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+      <AccordionSummary expandIcon={<></>}>
         {typeof summary === 'string' ? (
           <Typography fontWeight={600}>{summary}</Typography>
         ) : (

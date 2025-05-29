@@ -1,9 +1,13 @@
 import { Box, TextField, Typography } from '@mui/material';
 
-import IconArrowLeft from '../../assets/icons/iconArrowLeft.svg';
-import FlagBulgaria from '../../assets/icons/iconFlagBG.svg';
+import IconArrowLeft from '@/assets/icons/iconArrowLeft.svg';
+import FlagBulgaria from '@/assets/icons/iconFlagBG.svg';
 
 import classes from './styles';
+
+interface InputPhoneProps {
+  handleOnChange: (value: string) => void; // callback when filled
+}
 
 const formatInput = (value: string) => {
   let newValue = value.replace(/[^\d]/g, '').slice(0, 9);
@@ -21,20 +25,24 @@ const formatInput = (value: string) => {
   return newValue;
 };
 
-const InputPhone = (props: any) => {
+let isFocused = false;
+
+const InputPhone = (props: InputPhoneProps) => {
+  const { handleOnChange } = props;
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatedValue = formatInput(e.target.value);
 
     e.target.value = formatedValue;
-    if (props.onChange) {
-      return props.onChange(e);
-    }
+
+    return handleOnChange(e.target.value);
   };
 
   const onBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatedValue = formatInput(e.target.value);
 
     e.target.value = formatedValue; // TODO: Send value to parent
+    isFocused = false;
   };
   return (
     <TextField
@@ -43,7 +51,7 @@ const InputPhone = (props: any) => {
         input: {
           component: () => {
             return (
-              <Box sx={classes.container}>
+              <Box sx={classes.container(isFocused)}>
                 <Box sx={classes.wrapperSelect}>
                   <Box component="img" src={FlagBulgaria} onClick={() => {}} />
                   <Typography sx={classes.phonePrefix} variant="h4" fontSize={'16px'}>

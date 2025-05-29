@@ -8,6 +8,8 @@ const classes = {
     background: '#fff',
     boxShadow: 24,
     padding: '24px',
+    border: 'none',
+    outline: 'none',
   },
 };
 

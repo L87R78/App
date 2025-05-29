@@ -12,8 +12,11 @@ const route = {
   client: '/client',
   clientAccounts: '/client/client-accounts',
   clientData: '/client/client-data',
+  dailyBanking: '/daily-banking',
   paymentOperations: '/payment-operations',
   paymentOperationsTranfers: '/payment-operations/transfers',
+  creditProducts: '/credit-products',
+  savingInvestments: '/saving-investments',
   notFound: '*',
 } as const;
 
@@ -63,4 +66,4 @@ const pagesData: Page[] = [
   },
 ] as const;
 
-export { route, pagesData };
+export { pagesData, route };
