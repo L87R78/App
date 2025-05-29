@@ -1,7 +1,9 @@
 const classes = {
   layout: {
     height: '100%',
-    marginTop: '10%',
+    paddingTop: '10%',
+    background: '#fff',
+    borderRadius: '24px',
   },
   title: {
     textAlign: 'center',
