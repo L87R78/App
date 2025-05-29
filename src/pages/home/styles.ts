@@ -1,8 +1,13 @@
 const classes = {
   layout: {
     height: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  containerWelcome: {
+    width: '58%',
     paddingTop: '10%',
-    background: '#fff',
+    background: 'var(--clr-bg-1)',
     borderRadius: '24px',
   },
   title: {
@@ -35,6 +40,12 @@ const classes = {
     margin: '24px auto',
     width: '296px',
     gap: '16px',
+  },
+  // Chart
+  containerChart: {
+    width: '40%',
+    background: 'var(--clr-bg-1)',
+    borderRadius: '24px',
   },
 };
 
