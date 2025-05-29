@@ -13,7 +13,7 @@ const initialState: any = {
 };
 
 const onbordingSlice = createSlice({
-  name: 'home',
+  name: 'onbording',
   initialState,
   reducers: {
     addOnbordingData(state, action) {
