@@ -5,7 +5,7 @@ import { RootState } from '@/store';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-const LoadingModal: React.FC = () => {
+const LoadingModal: React.FC<{ text?: string }> = ({ text }: { text?: string }) => {
   const { t } = useI18nNamespaces(['shared/common']);
 
   const isVisible = useSelector((state: RootState) => state.common.isLoadingModalVisible);
@@ -21,6 +21,7 @@ const LoadingModal: React.FC = () => {
             <img src={DSKLogo} alt="DSK logo" width="80" height="70" loading="lazy" />
           </div>
         </div>
+        <Typography variant="body1">{text}</Typography>
       </div>
     </Dialog>
   );

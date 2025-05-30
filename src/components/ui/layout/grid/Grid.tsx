@@ -9,18 +9,20 @@ type CustomGridProps<T extends React.ElementType = 'div'> = {
   xs?: number;
   sm?: number;
   md?: number;
+  item?: boolean;
 } & GridProps<T>;
 
 const Grid = <T extends React.ElementType = 'div'>({
   className = '',
   children,
+  item,
   xs,
   sm,
   md,
   ...props
 }: CustomGridProps<T>) => {
   return (
-    <MuiGrid className={className} xs={xs} sm={sm} md={md} {...props}>
+    <MuiGrid className={className} xs={xs} sm={sm} md={md} item={item} {...props}>
       {children}
     </MuiGrid>
   );

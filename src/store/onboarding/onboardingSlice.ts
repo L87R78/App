@@ -137,6 +137,7 @@ const onboardingSlice = createSlice({
 
         if (payload) {
           state.idDocument.scanData = payload.scanData;
+          state.idDocument.dbScan = payload.scanData;
           state.idDocument.clientNumber = payload.clientNumber;
           state.idDocument.clientType = payload.clientType;
           state.idDocument.contactData = payload.contactData;

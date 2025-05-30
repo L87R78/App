@@ -69,4 +69,4 @@ const AddressDataSection: React.FC<Props> = ({ isDbScan, currentData, onChange }
   );
 };
 
-export default AddressDataSection;
+export default React.memo(AddressDataSection);

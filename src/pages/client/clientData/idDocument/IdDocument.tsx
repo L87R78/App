@@ -11,7 +11,7 @@ import {
 } from '@/components/ui';
 import { useI18nNamespaces } from '@/hooks';
 import dayjs from 'dayjs';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setLoadingModalVisibility } from '@/store/common/commonSlice';
@@ -45,16 +45,18 @@ const IdDocument = ({
   ]);
 
   const dispatch = useDispatch();
-  const scanDataFromStore = useSelector((state: RootState) => state.onboarding.idDocument.scanData);
-  const dbScanFromStore = useSelector((state: RootState) => state.onboarding.idDocument.dbScan);
   const isDbScanAvailable = useSelector(
     (state: RootState) => state.onboarding.idDocument.isDbScanAvailable
   );
 
   const [doAddressesMatch, setDoAddressesMatch] = useState(true);
-  const [localScanData, setLocalScanData] = useState<IdDocumentScanType>(
-    isDbScan ? dbScanFromStore : scanDataFromStore
+  const scanData = useSelector((state: RootState) =>
+    isDbScan ? state.onboarding.idDocument.dbScan : state.onboarding.idDocument.scanData
   );
+
+  const initialScanData = useMemo(() => scanData, [scanData]);
+
+  const [localScanData, setLocalScanData] = useState<IdDocumentScanType>(initialScanData);
 
   const handleScanAgain = () => {
     console.log('New scan button clicked');
@@ -108,6 +110,9 @@ const IdDocument = ({
         </div>
 
         <main>
+          {/* !!!! TODO: Replace div.gridContainer with responsive GRid from MUI  
+          https://mui.com/material-ui/react-grid/*/}
+
           <Card>
             <div className={!isDbScanAvailable ? classes.gridContainer : classes.flexContainer}>
               {/* LEFT SECTION */}
