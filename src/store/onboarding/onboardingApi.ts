@@ -1,21 +1,23 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios, { AxiosError } from 'axios';
+import { AxiosError } from 'axios';
 
 import { ResponseStatus } from '@/common/constants';
+import { setLoadingModalVisibility } from '../common/commonSlice';
 import { setSliceError } from '../error/errorSlice';
+import { initialScanData } from './onboardingSlice';
 
 const addClient = createAsyncThunk(
-  'onbording/addClient',
+  'onboarding/addClient',
   async (
-    data: any, // TODO: Add request data type
+    _, // TODO: Add request data type
     { dispatch, rejectWithValue }
   ) => {
-    const url = ''; // TODO: add url
+    // const url = ''; // TODO: add url
 
     try {
-      const result = await axios.post(url, data);
+      // const result = await axios.post(url, data);
 
-      return result.data;
+      return { clientNumber: '893283912321' };
     } catch (error: unknown) {
       if (error instanceof AxiosError && error.response) {
         dispatch(
@@ -31,16 +33,26 @@ const addClient = createAsyncThunk(
   }
 );
 
-const fetchOnbordingData = createAsyncThunk(
-  'onbording/fetchOnbordingData',
+const fetchOnboardingData = createAsyncThunk(
+  'onboarding/fetchOnboardingData',
   async (_, { dispatch, rejectWithValue }) => {
-    const url = ''; // TODO: add url
-
     try {
-      const result = await axios.get(url);
+      dispatch(setLoadingModalVisibility(true));
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      const result = {
+        scanData: initialScanData,
+        clientNumber: '12345678',
+        clientType: 'Mass client',
+        contactData: {
+          email: '',
+          phone: '',
+        },
+      };
 
-      return result.data;
+      dispatch(setLoadingModalVisibility(false));
+      return result;
     } catch (error: unknown) {
+      dispatch(setLoadingModalVisibility(false));
       if (error instanceof AxiosError && error.response) {
         dispatch(
           setSliceError({
@@ -55,4 +67,4 @@ const fetchOnbordingData = createAsyncThunk(
   }
 );
 
-export { addClient, fetchOnbordingData };
+export { addClient, fetchOnboardingData };

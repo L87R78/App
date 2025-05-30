@@ -1,48 +1,58 @@
+import { ResponseStatus } from '@/common/constants';
 import { LoadingModal } from '@/components/shared';
 import { Button, Card, Checkbox, Modal } from '@/components/ui';
 import { useI18nNamespaces } from '@/hooks';
 import { RootState } from '@/store';
-import { setCurrentTab } from '@/store/common/commonSlice';
-import {
-  setCheckAgainModalVisible,
-  setGoToContactModalVisible,
-} from '@/store/onbording/onbordingSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch } from '@/store/hooks';
+import { addClient, fetchOnboardingData } from '@/store/onboarding/onboardingApi';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import IdDocument from './IdDocument';
 import { classes } from './styles';
 import ValidationBlock from './ValidationBlocks';
 
-export const IdDocumentPage = () => {
-  const dispatch = useDispatch();
+export const IdDocumentPage = ({
+  handleChangeTab,
+}: {
+  handleChangeTab: (index: number) => void;
+}) => {
+  const dispatch = useAppDispatch();
   const { t } = useI18nNamespaces(['pages/client/client_data/id_document', 'shared/common']);
-
   const isDbScanAvailable = useSelector(
     (state: RootState) => state.onboarding.idDocument.isDbScanAvailable
   );
-  const isGoToContactDataModalVisible = useSelector(
-    (state: RootState) => state.onboarding.idDocument.isGoToContactDataModalVisible
-  );
-  const isCheckAgainModalVisible = useSelector(
-    (state: RootState) => state.onboarding.idDocument.isCheckAgainModalVisible
-  );
+  const status = useSelector((state: RootState) => state.onboarding.status);
+  const { clientNumber, scanData } = useSelector((state: RootState) => state.onboarding.idDocument);
+
+  const [isCheckAgainModalVisible, setCheckAgainModalVisible] = useState(false);
+  const [isGoToContactDataModalVisible, setGoToContactModalVisible] = useState(false);
 
   const handleCheckAgain = () => {
-    dispatch(setCheckAgainModalVisible(true));
+    setCheckAgainModalVisible(true);
     setTimeout(() => {
-      dispatch(setCheckAgainModalVisible(false));
+      setCheckAgainModalVisible(false);
     }, 1000);
   };
 
   const handleContinueToContactData = () => {
-    dispatch(setGoToContactModalVisible(false));
-    dispatch(setCurrentTab(1));
+    setGoToContactModalVisible(false);
+    handleChangeTab(1);
+    dispatch(addClient());
   };
 
-  return (
+  useEffect(() => {
+    if (!scanData.ucn) {
+      dispatch(fetchOnboardingData());
+    }
+  }, [dispatch]);
+
+  return status === ResponseStatus.PENDING || status === ResponseStatus.IDLE ? (
+    <LoadingModal />
+  ) : (
     <div className={classes.pageWrapper}>
       <div className={classes.topSection}>
         <div className={isDbScanAvailable ? classes.gridContainer : classes.flexContainer}>
-          <IdDocument />
+          <IdDocument setGoToContactModalVisible={setGoToContactModalVisible} />
           {isDbScanAvailable && <IdDocument isDbScan />}
         </div>
       </div>
@@ -116,7 +126,7 @@ export const IdDocumentPage = () => {
               <p className={classes.customerDataSavedText}>
                 {t('pages/client/client_data/id_document:customerDataSavedThirdText')}
               </p>
-              <p className={classes.assignedCustomerValue}>1234567</p>
+              <p className={classes.assignedCustomerValue}>{clientNumber}</p>
             </div>
           </div>
 

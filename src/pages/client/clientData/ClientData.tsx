@@ -1,8 +1,9 @@
+import { ClientInfoAside } from '@/components';
 import { Tabs } from '@/components/ui';
 import { useI18nNamespaces } from '@/hooks';
 import { RootState } from '@/store';
-import { setCurrentTab } from '@/store/common/commonSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { IdDocumentPage } from './idDocument/IdDocument.page';
 
 const ClientData = () => {
@@ -11,21 +12,29 @@ const ClientData = () => {
     'shared/button',
     'pages/client/client_data/id_document',
   ]);
-  const dispatch = useDispatch();
-  const currentTab = useSelector((state: RootState) => state.common.currentTab);
-
+  const [currentTab, setCurrentTab] = useState(0);
+  const { scanData } = useSelector((state: RootState) => state.onboarding.idDocument);
   const tabs = [
     {
       label: t('shared/button:IDdocument'),
-      content: <IdDocumentPage />,
+      content: <IdDocumentPage handleChangeTab={setCurrentTab} />,
     },
     {
       label: t('shared/button:contactData'),
       content: <p>Contact data</p>,
+      disabled: !scanData,
     },
   ];
+
+  const showAside = currentTab === 1;
+
   return (
-    <Tabs tabs={tabs} value={currentTab} onChange={index => dispatch(setCurrentTab(index))}></Tabs>
+    <div className="flex gap-6 w-full h-full">
+      <div className={'w-full'}>
+        <Tabs tabs={tabs} value={currentTab} onChange={index => setCurrentTab(index)} />
+      </div>
+      {showAside && <ClientInfoAside />}
+    </div>
   );
 };
 

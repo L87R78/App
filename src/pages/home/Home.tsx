@@ -1,6 +1,6 @@
 import { OnboardingStep } from '@/common/constants';
 import { AppDispatch } from '@/store';
-import { addOnbordingData } from '@/store/onbording/onbordingSlice';
+import { addOnboardingData } from '@/store/onboarding/onboardingSlice';
 import { Box, Button, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import classes from './styles';
@@ -9,7 +9,7 @@ const Home = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const handleStartService = () => {
-    dispatch(addOnbordingData(OnboardingStep.StartService));
+    dispatch(addOnboardingData(OnboardingStep.StartService));
   };
 
   return (

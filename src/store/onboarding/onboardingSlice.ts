@@ -3,10 +3,10 @@ import deepmerge from 'deepmerge';
 
 import { OnboardingStep, ResponseStatus } from '@/common/constants';
 import { IdDocumentScanType } from '@/types';
-import { addClient, fetchOnbordingData } from './onbordingApi';
+import { addClient, fetchOnboardingData } from './onboardingApi';
 
 // --- Initial Scan Data ---
-const initialScanData: IdDocumentScanType = {
+export const initialScanData: IdDocumentScanType = {
   documentType: 'ID Card Specimen 2010',
   documentNumber: 'АА0000000',
   authority: 'Mol BGR',
@@ -49,6 +49,12 @@ export interface IdDocumentState {
   isCheckAgainModalVisible: boolean;
   scanData: IdDocumentScanType;
   dbScan: IdDocumentScanType;
+  clientNumber: number | string;
+  clientType: string;
+  contactData: {
+    email: string;
+    phone: string;
+  };
 }
 
 export interface OnboardingDataState {
@@ -57,7 +63,7 @@ export interface OnboardingDataState {
 
 export interface OnboardingState {
   idDocument: IdDocumentState;
-  onbordingData: OnboardingDataState;
+  onboardingData: OnboardingDataState;
   status: ResponseStatus;
 }
 
@@ -67,10 +73,16 @@ const initialState: OnboardingState = {
     isDbScanAvailable: false,
     isGoToContactDataModalVisible: false,
     isCheckAgainModalVisible: false,
-    scanData: initialScanData,
-    dbScan: initialScanData,
+    scanData: {} as IdDocumentScanType,
+    dbScan: {} as IdDocumentScanType,
+    clientNumber: '',
+    clientType: 'Mass client',
+    contactData: {
+      email: '',
+      phone: '',
+    },
   },
-  onbordingData: {
+  onboardingData: {
     isStartService: false,
   },
   status: ResponseStatus.IDLE,
@@ -93,9 +105,9 @@ const onboardingSlice = createSlice({
     updateScanDataField(state, action: PayloadAction<Partial<IdDocumentScanType>>) {
       state.idDocument.scanData = deepmerge(state.idDocument.scanData, action.payload);
     },
-    addOnbordingData(state, action: PayloadAction<OnboardingStep>) {
+    addOnboardingData(state, action: PayloadAction<OnboardingStep>) {
       if (action.payload === OnboardingStep.StartService) {
-        state.onbordingData.isStartService = true;
+        state.onboardingData.isStartService = true;
       }
     },
   },
@@ -105,21 +117,32 @@ const onboardingSlice = createSlice({
         state.status = ResponseStatus.PENDING;
       })
       .addCase(addClient.fulfilled, (state, action) => {
+        const payload = action.payload;
         state.status = ResponseStatus.FULFILLED;
-        // Optionally handle payload
+
+        if (payload) {
+          state.idDocument.clientNumber = payload.clientNumber;
+        }
       })
       .addCase(addClient.rejected, (state, action) => {
         const { status } = action.payload as { status: ResponseStatus };
         state.status = status;
       })
-      .addCase(fetchOnbordingData.pending, state => {
+      .addCase(fetchOnboardingData.pending, state => {
         state.status = ResponseStatus.PENDING;
       })
-      .addCase(fetchOnbordingData.fulfilled, (state, action) => {
+      .addCase(fetchOnboardingData.fulfilled, (state, action) => {
+        const payload = action.payload;
         state.status = ResponseStatus.FULFILLED;
-        // Optionally handle payload
+
+        if (payload) {
+          state.idDocument.scanData = payload.scanData;
+          state.idDocument.clientNumber = payload.clientNumber;
+          state.idDocument.clientType = payload.clientType;
+          state.idDocument.contactData = payload.contactData;
+        }
       })
-      .addCase(fetchOnbordingData.rejected, (state, action) => {
+      .addCase(fetchOnboardingData.rejected, (state, action) => {
         const { status } = action.payload as { status: ResponseStatus };
         state.status = status;
       });
@@ -132,7 +155,7 @@ export const {
   setGoToContactModalVisible,
   setCheckAgainModalVisible,
   updateScanDataField,
-  addOnbordingData,
+  addOnboardingData,
 } = onboardingSlice.actions;
 
 export const onboardingReducer = onboardingSlice.reducer;

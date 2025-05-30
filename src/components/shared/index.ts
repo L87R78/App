@@ -6,4 +6,5 @@ export { default as Loader } from './loader/Loader';
 export { default as LoadingModal } from './loadingModal/LoadingModal';
 export { default as Navigation } from './navigation/Navigation';
 export { default as SmsCode } from './smsCode/SmsCode';
+export { default as ClientInfoAside } from './clientInfoAside/ClientInfoAside';
 export { createSvgIconFromString } from './svgIcon/SvgIcon';

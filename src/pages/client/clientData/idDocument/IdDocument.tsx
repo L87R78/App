@@ -11,13 +11,14 @@ import {
 } from '@/components/ui';
 import { useI18nNamespaces } from '@/hooks';
 import dayjs from 'dayjs';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setLoadingModalVisibility } from '@/store/common/commonSlice';
 import type { RootState } from '@/store/index';
-import { setGoToContactModalVisible, updateScanDataField } from '@/store/onbording/onbordingSlice';
+import { updateScanDataField } from '@/store/onboarding/onboardingSlice';
 import { type IdDocumentScanType } from '@/types';
+import React from 'react';
 import {
   citizenship_data,
   country_of_issue_data,
@@ -29,7 +30,13 @@ import {
 import AddressDataSection from './AddressDataSection';
 import { classes } from './styles';
 
-const IdDocument = ({ isDbScan = false }: { isDbScan?: boolean }) => {
+const IdDocument = ({
+  isDbScan = false,
+  setGoToContactModalVisible,
+}: {
+  isDbScan?: boolean;
+  setGoToContactModalVisible?: (status: boolean) => void;
+}) => {
   const { t } = useI18nNamespaces([
     'pages/client/client_data/id_document',
     'shared/common',
@@ -49,21 +56,19 @@ const IdDocument = ({ isDbScan = false }: { isDbScan?: boolean }) => {
     isDbScan ? dbScanFromStore : scanDataFromStore
   );
 
-  useEffect(() => {
-    console.log('Updated localScanData:', localScanData);
-  }, [localScanData]);
-
   const handleScanAgain = () => {
     console.log('New scan button clicked');
   };
 
   const handleGoToContactData = () => {
-    dispatch(setLoadingModalVisibility(true));
-    dispatch(updateScanDataField(localScanData));
-    setTimeout(() => {
-      dispatch(setLoadingModalVisibility(false));
-      dispatch(setGoToContactModalVisible(true));
-    }, 1000);
+    if (!isDbScan && setGoToContactModalVisible) {
+      dispatch(setLoadingModalVisibility(true));
+      dispatch(updateScanDataField(localScanData));
+      setTimeout(() => {
+        dispatch(setLoadingModalVisibility(false));
+        setGoToContactModalVisible(true);
+      }, 1000);
+    }
   };
 
   return (
@@ -341,4 +346,4 @@ const IdDocument = ({ isDbScan = false }: { isDbScan?: boolean }) => {
   );
 };
 
-export default IdDocument;
+export default React.memo(IdDocument);
