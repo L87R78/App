@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import iconNotifications from '@/assets/icons/iconNotifications.svg';
-import imageAvatar from '@/assets/images/imageAvatar.svg';
+// import imageAvatar from '@/assets/images/imageAvatar.svg';
 import { Box, Button, Typography } from '@/components/ui';
 
 import classes from './styles';
@@ -39,7 +39,7 @@ const Header = (props: HeaderProps) => {
           sx={classes.wrapperAvatar}
           onClick={() => setIsOpenUserSettings(!isOpenUserSettings)}
         >
-          <Box component="img" sx={classes.iconAvatar} src={imageAvatar} />
+          <Box component="img" sx={classes.iconAvatar} src={iconNotifications} />
           <Box>
             <Typography variant="h3" sx={classes.name}>
               Мария Петрова

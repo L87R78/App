@@ -121,6 +121,9 @@ export const commonThemeOptions = {
           disableScrollLock: true,
           PaperProps: {
             elevation: 0,
+            sx: {
+              mt: 1,
+            },
           },
           slotProps: {
             backdrop: {

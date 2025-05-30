@@ -10,7 +10,11 @@ type Props = {
 const Checkbox: React.FC<Props> = ({ label, className = '', labelClassName = '', ...props }) => {
   return (
     <label className={`flex items-center gap-1 cursor-pointer ${className}`}>
-      <MuiCheckbox disableRipple {...props} />
+      <MuiCheckbox
+        disableRipple
+        {...props}
+        style={{ width: '16px', height: '16px', marginRight: '6px' }}
+      />
       {label && <span className={labelClassName}>{label}</span>}
     </label>
   );

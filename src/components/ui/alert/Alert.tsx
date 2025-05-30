@@ -1,13 +1,14 @@
 import { Alert as MuiAlert, type AlertProps } from '@mui/material';
-import React, { type ReactNode } from 'react';
 
-type Props = {
+type PropsAlert = {
   className?: string;
   severity?: 'error' | 'warning' | 'info' | 'success';
 } & AlertProps;
 
-const Alert: React.FC<Props> = ({ className = '', severity = 'info', ...props }): ReactNode => {
-  return <MuiAlert className={className} severity={severity} {...props} />;
+const Alert = (props: PropsAlert) => {
+  const { className = '', severity = 'info', icon } = props;
+
+  return <MuiAlert icon={icon} className={className} severity={severity} {...props} />;
 };
 
 export default Alert;
