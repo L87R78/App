@@ -14,6 +14,7 @@ type Props = {
   actions?: ReactNode;
   className?: string;
   contentClassName?: string;
+  children?: ReactNode;
 } & CardProps;
 
 const Card: React.FC<Props> = ({
@@ -22,10 +23,11 @@ const Card: React.FC<Props> = ({
   actions,
   className = '',
   contentClassName = '',
+  children,
   ...props
 }) => {
   return (
-    <MuiCard className={className} {...props}>
+    <MuiCard className={`${className} p-3 m-2`} {...props}>
       {title && (
         <CardHeader
           title={
@@ -39,6 +41,7 @@ const Card: React.FC<Props> = ({
           }
         />
       )}
+      {children}
       {cardContent && <CardContent className={contentClassName}>{cardContent}</CardContent>}
       {actions && <CardActions>{actions}</CardActions>}
     </MuiCard>

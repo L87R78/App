@@ -156,9 +156,10 @@ const Navigation = (props: NavigationProps) => {
               {clientButtons.isClientItems && (
                 <Box sx={classes.wrapperItems}>
                   <>
-                    {clientData.map(item => {
+                    {clientData.map((item, key) => {
                       return (
                         <Typography
+                          key={item.path || key}
                           onClick={() => handleNavigate(item.path)}
                           sx={classes.menuItem(Boolean(item.path.length), pathname === item.path)}
                           variant="h5"
@@ -184,9 +185,10 @@ const Navigation = (props: NavigationProps) => {
                       </Box>
                       {clientButtons.isReportItems && (
                         <Box sx={classes.wrapperItems}>
-                          {reportsData.map(item => {
+                          {reportsData.map((item, key) => {
                             return (
                               <Typography
+                                key={item.path || key}
                                 sx={classes.menuItem(
                                   Boolean(item.path.length),
                                   pathname === item.path
@@ -238,9 +240,10 @@ const Navigation = (props: NavigationProps) => {
                     </Box>
                     {dailyBankingButtons.isPlanItems && (
                       <Box sx={classes.wrapperItems}>
-                        {dailyBankingPlansData.map(item => {
+                        {dailyBankingPlansData.map((item, key) => {
                           return (
                             <Typography
+                              key={item.path || key}
                               sx={classes.menuItem(
                                 Boolean(item.path.length),
                                 pathname === item.path
@@ -270,9 +273,10 @@ const Navigation = (props: NavigationProps) => {
                     </Box>
                     {dailyBankingButtons.isAccountItems && (
                       <Box sx={classes.wrapperItems}>
-                        {dailyBankingAccountsData.map(item => {
+                        {dailyBankingAccountsData.map((item, key) => {
                           return (
                             <Typography
+                              key={item.path || key}
                               sx={classes.menuItem(
                                 Boolean(item.path.length),
                                 pathname === item.path
@@ -317,9 +321,10 @@ const Navigation = (props: NavigationProps) => {
               </Box>
               {paymentOperationsButtons.isPaymentOperations && (
                 <Box sx={classes.wrapperItems}>
-                  {paymentOperationsData.map(item => {
+                  {paymentOperationsData.map((item, key) => {
                     return (
                       <Typography
+                        key={item.path || key}
                         onClick={() => handleNavigate(item.path)}
                         sx={classes.menuItem(Boolean(item.path.length), pathname === item.path)}
                         variant="h5"
@@ -349,9 +354,10 @@ const Navigation = (props: NavigationProps) => {
               </Box>
               {creditProductsButtons.isCreditProductsButtons && (
                 <Box sx={classes.wrapperItems}>
-                  {creditProductsData.map(item => {
+                  {creditProductsData.map((item, key) => {
                     return (
                       <Typography
+                        key={item.path || key}
                         sx={classes.menuItem(Boolean(item.path.length), pathname === item.path)}
                         variant="h5"
                       >
@@ -401,9 +407,10 @@ const Navigation = (props: NavigationProps) => {
                     </Box>
                     {savingInvestmentsButtons.isSavingInvestmentsUser && (
                       <Box sx={classes.wrapperItems}>
-                        {savingInvestmentsUserData.map(item => {
+                        {savingInvestmentsUserData.map((item, key) => {
                           return (
                             <Typography
+                              key={item.path || key}
                               sx={classes.menuItem(
                                 Boolean(item.path.length),
                                 pathname === item.path
@@ -418,9 +425,10 @@ const Navigation = (props: NavigationProps) => {
                     )}
                   </Box>
 
-                  {savingInvestmentsData.map(item => {
+                  {savingInvestmentsData.map((item, key) => {
                     return (
                       <Typography
+                        key={item.path || key}
                         sx={classes.menuItem(Boolean(item.path.length), pathname === item.path)}
                         variant="h5"
                       >

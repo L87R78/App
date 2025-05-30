@@ -119,7 +119,13 @@
   --typography-h4-line-height: 2rem;
 
   --typography-h5-font-size: 1.75rem;
+  --typography-h5-font-weight: 400;
   --typography-h5-line-height: 1.75rem;
+
+  --typography-h6-font-size: 1.25rem;
+  --typography-h6-font-weight: 600;
+
+  --typography-h6-line-height: 1.35rem;
 
   --typography-body1-font-size: 1rem;
   --typography-body1-font-weight: 400;

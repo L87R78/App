@@ -1,6 +1,6 @@
 import iconManager from '@/assets/icons/iconManager.svg';
 
-import { Box, Typography } from '../../ui';
+import { Box, Typography } from '@/components/ui';
 import classes from './styles';
 
 const Footer = () => {

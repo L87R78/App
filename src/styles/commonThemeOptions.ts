@@ -53,6 +53,10 @@ export const commonThemeOptions = {
       fontSize: 'var(--typography-h5-font-size, 1.75rem)',
       fontWeight: 'var(--typography-h5-font-weight, 400)',
     },
+    h6: {
+      fontSize: 'var(--typography-h6-font-size, 1.25rem)',
+      fontWeight: 'var(--typography-h6-font-weight, 600)',
+    },
     body1: {
       fontSize: 'var(--typography-body1-font-size, 1rem)',
       fontWeight: 'var(--typography-body1-font-weight, 400)',
@@ -60,6 +64,7 @@ export const commonThemeOptions = {
     body2: {
       fontSize: 'var(--typography-body2-font-size, 0.85rem)',
       fontWeight: 'var(--typography-body2-font-weight, 500)',
+      color: 'var(--clr-text-secondary, hsl(0, 0%, 45%))',
     },
     caption: {
       fontSize: 'var(--typography-caption-font-size, 0.5rem)',

@@ -5,6 +5,7 @@ import { defineConfig } from 'vite';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
 export default defineConfig({
   plugins: [tailwindcss()],
   resolve: {
@@ -19,7 +20,7 @@ export default defineConfig({
       '@router': path.resolve(__dirname, 'src/router'),
       '@styles': path.resolve(__dirname, 'src/styles'),
       '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@store': path.resolve(__dirname, 'src/store'),
     },
   },
-  // base: '/App/',
 });

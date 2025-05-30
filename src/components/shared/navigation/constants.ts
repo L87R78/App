@@ -1,4 +1,4 @@
-import { route } from '../../../router/pagesData';
+import { route } from '@/router';
 
 const client = 'Client';
 const reports = 'Reports';

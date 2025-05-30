@@ -1,5 +1,5 @@
 import { Tab as MuiTab, Tabs as MuiTabs, type TabsProps } from '@mui/material';
-import React, { useState, type ReactNode } from 'react';
+import React, { useEffect, useState, type ReactNode } from 'react';
 import Box from '../layout/box/Box';
 
 interface TabItem {
@@ -12,6 +12,8 @@ interface TabItem {
 interface Props extends Omit<TabsProps, 'value' | 'onChange'> {
   tabs: TabItem[];
   defaultIndex?: number;
+  value?: number;
+  onChange?: (index: number) => void;
   className?: string;
   contentClassName?: string;
   contentHeight?: string | number;
@@ -20,12 +22,24 @@ interface Props extends Omit<TabsProps, 'value' | 'onChange'> {
 const Tabs: React.FC<Props> = ({
   tabs,
   defaultIndex = 0,
+  value,
+  onChange,
   className = '',
   contentClassName = '',
   contentHeight,
   ...props
 }) => {
+  const isControlled = value !== undefined;
   const [activeIndex, setActiveIndex] = useState(defaultIndex);
+
+  useEffect(() => {
+    if (isControlled) setActiveIndex(value!);
+  }, [value]);
+
+  const handleChange = (_: unknown, newIndex: number) => {
+    if (!isControlled) setActiveIndex(newIndex);
+    if (onChange) onChange(newIndex);
+  };
 
   return (
     <Box
@@ -38,15 +52,10 @@ const Tabs: React.FC<Props> = ({
         overflow: 'hidden',
       }}
     >
-      <Box
-        sx={{
-          pt: 1.5,
-          pb: 0,
-        }}
-      >
+      <Box sx={{ pt: 1.5, pb: 0 }}>
         <MuiTabs
           value={activeIndex}
-          onChange={(_, val) => setActiveIndex(val)}
+          onChange={handleChange}
           variant="scrollable"
           scrollButtons="auto"
           allowScrollButtonsMobile

@@ -17,7 +17,7 @@ const TextField: React.FC<Props> = ({
   return (
     <div className={`flex flex-col gap-1 ${className}`}>
       {label && (
-        <Typography variant="body2" fontWeight={500} className={labelClassName}>
+        <Typography variant="body2" fontWeight={300} className={labelClassName}>
           {label}
         </Typography>
       )}

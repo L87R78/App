@@ -3,6 +3,7 @@ import React, { type ReactNode } from 'react';
 
 type Props = {
   className?: string;
+  severity?: 'error' | 'warning' | 'info' | 'success';
 } & AlertProps;
 
 const Alert: React.FC<Props> = ({ className = '', severity = 'info', ...props }): ReactNode => {

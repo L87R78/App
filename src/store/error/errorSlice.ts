@@ -1,6 +1,5 @@
+import { ResponseStatus } from '@/common/constants';
 import { createSlice } from '@reduxjs/toolkit';
-
-import { ResponseStatus } from '../../common/constants';
 
 const initialState: any = {
   // Add models.ErrorState type
@@ -27,4 +26,5 @@ const errorSlice = createSlice({
 
 export const { setSliceError, clearSliceError } = errorSlice.actions;
 
-export default errorSlice.reducer;
+export const errorReducer = errorSlice.reducer;
+export default errorSlice;

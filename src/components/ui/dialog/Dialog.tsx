@@ -10,11 +10,12 @@ import React, { type ReactNode } from 'react';
 
 type Props = {
   open: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   title?: ReactNode;
   dialogContent?: ReactNode;
   actions?: ReactNode;
   className?: string;
+  children?: ReactNode;
 } & Omit<MuiDialogProps, 'open' | 'onClose'>;
 
 const Dialog: React.FC<Props> = ({
@@ -24,6 +25,7 @@ const Dialog: React.FC<Props> = ({
   dialogContent,
   actions,
   className = '',
+  children,
   ...props
 }): ReactNode => {
   return (
@@ -39,6 +41,7 @@ const Dialog: React.FC<Props> = ({
           )}
         </DialogTitle>
       )}
+      {children}
       {dialogContent && <DialogContent>{dialogContent}</DialogContent>}
       {actions && <DialogActions>{actions}</DialogActions>}
     </MuiDialog>

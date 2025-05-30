@@ -1,25 +1,17 @@
-import { type ReactNode, useState } from 'react';
+import { type ReactNode } from 'react';
 
-import { Box, Modal as ModalMui } from '@mui/material';
+import { Box, Modal as ModalMui, type ModalOwnProps } from '@mui/material';
 import classes from './styles';
 
-interface ModalProps {
+type ModalProps = {
+  open: boolean;
   children: ReactNode;
   handleClose?: (value: boolean) => void;
-}
+} & ModalOwnProps;
 
-const Modal = (props: ModalProps) => {
-  const { children, handleClose } = props;
-
-  const [isOpen, setIsOpen] = useState(true);
-
-  const handleCloseModal = () => {
-    setIsOpen(false);
-    handleClose && handleClose(false);
-  };
-
+const Modal = ({ open, handleClose, children, ...props }: ModalProps) => {
   return (
-    <ModalMui open={isOpen} onClose={handleCloseModal}>
+    <ModalMui open={open} onClose={handleClose} {...props}>
       <Box sx={classes.root}>{children}</Box>
     </ModalMui>
   );

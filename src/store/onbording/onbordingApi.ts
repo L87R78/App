@@ -1,8 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios, { AxiosError } from 'axios';
 
-import { ResponseStatus } from '../../common/constants';
-
+import { ResponseStatus } from '@/common/constants';
 import { setSliceError } from '../error/errorSlice';
 
 const addClient = createAsyncThunk(

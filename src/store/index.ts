@@ -1,12 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-
-import errorSlice from './error/errorSlice';
-import onbordingSlice from './onbording/onbordingSlice';
+import commonReducer from './common/commonSlice';
+import { errorReducer } from './error/errorSlice';
+import { onboardingReducer } from './onbording/onbordingSlice';
 
 const store = configureStore({
   reducer: {
-    onbording: onbordingSlice,
-    error: errorSlice,
+    onboarding: onboardingReducer,
+    common: commonReducer,
+    error: errorReducer,
   },
 });
 
