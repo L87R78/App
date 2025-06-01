@@ -3,6 +3,8 @@ import { AppDispatch } from '@/store';
 import { addOnbordingData } from '@/store/onbording/onbordingSlice';
 import { Box, Button, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
+import { LineChart } from '@/components';
+import iconNotifications from '@/assets/icons/iconNotifications.svg';
 import classes from './styles';
 
 const Home = () => {
@@ -36,7 +38,53 @@ const Home = () => {
           </Button>
         </Box>
       </Box>
-      <Box sx={classes.containerChart}>Chart - In progress...</Box>
+      <Box sx={classes.containerChart}>
+        <Box sx={classes.containerFirstSectionChart}>
+          <Box sx={classes.wrapperBoxInfo}>
+            <Typography sx={classes.titleChart} variant="h3">
+              Served customers
+            </Typography>
+            <Typography sx={classes.titleChart} variant="h3">
+              354
+            </Typography>
+          </Box>
+          <Box sx={classes.wrapperBoxInfo}>
+            <Typography sx={classes.descriptionChart} variant="h3">
+              Total number of customers served
+            </Typography>
+            <Box sx={classes.wrapperTotalCustomersInfo}>
+              <Box component="img" src={iconNotifications} />
+              <Typography sx={classes.descriptionPercentageChart} variant="h3">
+                21.3% lower this mounth
+              </Typography>
+            </Box>
+          </Box>
+
+          <LineChart />
+        </Box>
+        {/* <Box sx={classes.secondSectionChart}></Box> */}
+        <Box sx={classes.containerSecondSectionChart}>
+          <Box sx={classes.wrapperLastClientInfo}>
+            <Box component="img" src={iconNotifications} />
+            <Box>
+              <Typography sx={classes.titleChart} variant="h3">
+                Last client: Ivan Georgiev Ivanov
+              </Typography>
+              <Typography sx={classes.descriptionChart} variant="h3">
+                Client ID: 23254565466543
+              </Typography>
+            </Box>
+          </Box>
+          <Box sx={classes.wrapperAllClientInfo}>
+            <Typography sx={classes.titleAllClients} variant="h3">
+              All clients for the day
+            </Typography>
+            <Button disabled variant="text">
+              View
+            </Button>
+          </Box>
+        </Box>
+      </Box>
     </Box>
   );
 };

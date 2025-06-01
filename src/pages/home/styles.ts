@@ -44,8 +44,58 @@ const classes = {
   // Chart
   containerChart: {
     width: '40%',
+  },
+  containerFirstSectionChart: {
+    display: 'flex',
+    flexDirection: 'column',
+    borderRadius: '24px',
+    padding: '24px',
+    marginBottom: '48px',
+    background: 'var(--clr-bg-1)',
+  },
+  containerSecondSectionChart: {
+    height: '150px',
     background: 'var(--clr-bg-1)',
     borderRadius: '24px',
+    padding: '24px',
+  },
+  firstSectionChart: {
+    paddingBottom: '24px',
+  },
+  secondSectionChart: {},
+  wrapperBoxInfo: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: '24px',
+  },
+  wrapperTotalCustomersInfo: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  titleChart: {
+    fontSize: '24px',
+  },
+  descriptionChart: {
+    fontSize: '14px',
+    color: 'var(--clr-text-label)',
+  },
+  descriptionPercentageChart: {
+    fontSize: '14px',
+    color: 'var(--clr-danger)',
+    marginLeft: '8px',
+  },
+  wrapperLastClientInfo: {
+    display: 'flex',
+    gap: '16px',
+  },
+  wrapperAllClientInfo: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    marginTop: '32px',
+  },
+  titleAllClients: {
+    fontSize: '18px',
   },
 };
 
