@@ -40,6 +40,10 @@ const initialScanData: IdDocumentScanType = {
   citizenship: 'Bulgarian',
   postalCode: '1000',
   residence: 'Bulgaria',
+  clientData: {
+    phoneNumber: '',
+    email: '',
+  },
 };
 
 // --- Types ---
@@ -62,7 +66,7 @@ export interface OnboardingState {
 }
 
 // --- Initial State ---
-const initialState: OnboardingState = {
+const initialState = {
   idDocument: {
     isDbScanAvailable: false,
     isGoToContactDataModalVisible: false,
@@ -74,6 +78,10 @@ const initialState: OnboardingState = {
     isStartService: false,
   },
   status: ResponseStatus.IDLE,
+  clientData: {
+    phoneNumber: '',
+    email: '',
+  },
 };
 
 // --- Slice ---
@@ -97,6 +105,12 @@ const onboardingSlice = createSlice({
       if (action.payload === OnboardingStep.StartService) {
         state.onbordingData.isStartService = true;
       }
+    },
+    setContactData(state, action) {
+      const { phoneNumber, email } = action.payload;
+
+      state.clientData.phoneNumber = phoneNumber;
+      state.clientData.email = email;
     },
   },
   extraReducers: builder => {
@@ -133,6 +147,7 @@ export const {
   setCheckAgainModalVisible,
   updateScanDataField,
   addOnbordingData,
+  setContactData,
 } = onboardingSlice.actions;
 
 export const onboardingReducer = onboardingSlice.reducer;

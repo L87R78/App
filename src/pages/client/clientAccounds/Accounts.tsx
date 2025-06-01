@@ -3,16 +3,28 @@ import { useState } from 'react';
 import { Typography } from '@mui/material';
 
 import { Box, Button, Checkbox, Divider, Select } from '@/components/ui';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '@/store/index';
+import { setClientAccountsData } from '@/store/clientAccounts/clientAccountsSlice';
 import NoAccounts from './NoAccounts';
 import { productGroups, products, currency, plans } from './constants';
 import classes from './styles';
 
-const ClientAccounts = () => {
-  const [isConfirm, setIsConfirm] = useState(false);
-
+const Accounts = () => {
+  const dispatch = useDispatch();
   const clientAccounts = useSelector((state: RootState) => state.clientAccounts);
+
+  const [accounts, setAccounts] = useState({
+    productGroups: productGroups[0].value,
+    product: products[0].value,
+    currency: currency[0].value,
+    selectPlan: plans[0].value,
+    isConfirm: false,
+  });
+
+  const handleSignature = () => {
+    dispatch(setClientAccountsData(accounts));
+  };
 
   if (!clientAccounts.hasClientAccountsData) {
     return <NoAccounts />; // TODO: Update with redux state
@@ -23,27 +35,73 @@ const ClientAccounts = () => {
       <Box sx={classes.wrapperClientAccountSelects}>
         <Box sx={classes.wrapperSelects}>
           <Select
-            value={clientAccounts.productGroups}
+            value={accounts.productGroups}
             options={productGroups}
             label="Select Product Group"
+            onChange={e => {
+              setAccounts(prev => ({
+                ...prev,
+                productGroups: e.target.value,
+              }));
+            }}
           />
-          <Select value={clientAccounts.currency} options={currency} label="Select Currency" />
+          <Select
+            value={accounts.currency}
+            options={currency}
+            label="Select Currency"
+            onChange={e => {
+              setAccounts(prev => ({
+                ...prev,
+                currency: e.target.value,
+              }));
+            }}
+          />
         </Box>
         <Box sx={classes.wrapperSelects}>
-          <Select value={clientAccounts.products} options={products} label="Product" />
-          <Select value={clientAccounts.plans} options={plans} label="Select Plan" />
+          <Select
+            disabled={accounts.productGroups === productGroups[0].value}
+            value={accounts.product}
+            options={products}
+            label="Product"
+            onChange={e => {
+              setAccounts(prev => ({
+                ...prev,
+                product: e.target.value,
+              }));
+            }}
+          />
+          <Select
+            disabled={accounts.productGroups !== productGroups[0].value}
+            value={accounts.selectPlan}
+            options={plans}
+            label="Select Plan"
+            onChange={e => {
+              setAccounts(prev => ({
+                ...prev,
+                selectPlan: e.target.value,
+              }));
+            }}
+          />
         </Box>
       </Box>
-      {!isConfirm && (
+      {!accounts.isConfirm && (
         <Box sx={classes.wrapperActions}>
           <Button variant="outlined">Cancel</Button>
-          <Button variant="contained" onClick={() => setIsConfirm(!isConfirm)}>
+          <Button
+            variant="contained"
+            onClick={() => {
+              setAccounts(prev => ({
+                ...prev,
+                isConfirm: true,
+              }));
+            }}
+          >
             confirm
           </Button>
         </Box>
       )}
 
-      {isConfirm && (
+      {accounts.isConfirm && (
         <>
           <Box sx={classes.wrapperReletedDocuments}>
             <Divider />
@@ -83,7 +141,7 @@ const ClientAccounts = () => {
               <Button variant="outlined" onClick={() => {}}>
                 Print
               </Button>
-              <Button variant="contained" onClick={() => {}}>
+              <Button variant="contained" onClick={handleSignature}>
                 E-signature
               </Button>
             </Box>
@@ -94,4 +152,4 @@ const ClientAccounts = () => {
   );
 };
 
-export default ClientAccounts;
+export default Accounts;

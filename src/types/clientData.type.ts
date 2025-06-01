@@ -16,6 +16,10 @@ export type IdDocumentScanType = {
   citizenship: string;
   postalCode: string;
   residence: string;
+  clientData: {
+    phoneNumber: string;
+    email: string;
+  };
 };
 export type ClientAddressType = {
   city: string;

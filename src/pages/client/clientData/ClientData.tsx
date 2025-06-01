@@ -4,6 +4,7 @@ import { RootState } from '@/store';
 import { setCurrentTab } from '@/store/common/commonSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { IdDocumentPage } from './idDocument/IdDocument.page';
+import ContactData from './contactData/ContactData';
 
 const ClientData = () => {
   const { t } = useI18nNamespaces([
@@ -21,7 +22,7 @@ const ClientData = () => {
     },
     {
       label: t('shared/button:contactData'),
-      content: <p>Contact data</p>,
+      content: <ContactData />,
     },
   ];
   return (

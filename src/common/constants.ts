@@ -1,3 +1,7 @@
+const phonePrefixes = {
+  BG: '+359',
+};
+
 const responseHTTPcodes = {
   accepted: 202,
   badRequest: 400,
@@ -21,4 +25,4 @@ export enum OnboardingStep {
   StartService = 'START_SERVICE',
 }
 
-export { responseHTTPcodes };
+export { phonePrefixes, responseHTTPcodes };

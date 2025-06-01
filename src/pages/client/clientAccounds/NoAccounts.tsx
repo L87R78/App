@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/store';
-import { setClientAccounts } from '@/store/clientAccounts/clientAccountsSlice';
+import { setHasClientAccountsData } from '@/store/clientAccounts/clientAccountsSlice';
 import { Alert, Box, Button } from '@/components/ui';
 
 import classes from './styles';
@@ -10,7 +10,7 @@ const NoAccounts = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const handleStartService = () => {
-    dispatch(setClientAccounts(true));
+    dispatch(setHasClientAccountsData(true));
   };
 
   return (
