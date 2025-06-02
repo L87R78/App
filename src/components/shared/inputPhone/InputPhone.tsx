@@ -1,86 +1,78 @@
-import { Box, TextField, Typography } from '@mui/material';
+import { Box, InputAdornment, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { useState } from 'react';
 
-import IconArrowLeft from '@/assets/icons/iconArrowLeft.svg';
 import FlagBulgaria from '@/assets/icons/iconFlagBG.svg';
-import classes from './styles';
+import { phonePrefixes } from '@/common/constants';
 
 interface InputPhoneProps {
-  handleOnChange: (value: string) => void; // callback when filled
+  placeholder?: string;
+  label?: string;
+  handleOnBlur: (value: string) => void;
 }
 
 const formatInput = (value: string) => {
   let newValue = value.replace(/[^\d]/g, '').slice(0, 9);
-
   newValue = newValue.replace(/(\d{1,3})(\d{1,3})?(\d{1,3})?/, function (_, p1, p2, p3) {
-    if (p3) {
-      return `${p1} ${p2} ${p3}`;
-    } else if (p2) {
-      return `${p1} ${p2}`;
-    }
-
+    if (p3) return `${p1} ${p2} ${p3}`;
+    else if (p2) return `${p1} ${p2}`;
     return p1;
   });
-
   return newValue;
 };
 
-let isFocused = false;
-
-const InputPhone = (props: InputPhoneProps) => {
-  const { handleOnChange } = props;
+const InputPhone = ({ label, placeholder, handleOnBlur }: InputPhoneProps) => {
+  const [value, setValue] = useState('');
+  const [prefix, setPrefix] = useState(phonePrefixes.BG);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formatedValue = formatInput(e.target.value);
-
-    e.target.value = formatedValue;
-
-    return handleOnChange(e.target.value);
+    const formatted = formatInput(e.target.value);
+    setValue(formatted);
   };
 
-  const onBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formatedValue = formatInput(e.target.value);
-
-    e.target.value = formatedValue; // TODO: Send value to parent
-    isFocused = false;
+  const onBlur = () => {
+    handleOnBlur(`${prefix} ${value}`);
   };
+
   return (
-    <TextField
-      name={''}
-      slotProps={{
-        input: {
-          component: () => {
-            return (
-              <Box sx={classes.container(isFocused)}>
-                <Box sx={classes.wrapperSelect}>
-                  <Box component="img" src={FlagBulgaria} onClick={() => {}} />
-                  <Typography sx={classes.phonePrefix} variant="h4" fontSize={'16px'}>
-                    {'+359'}
-                  </Typography>
-                  <Box component="img" sx={classes.iconArrow} src={IconArrowLeft} />
-                </Box>
-                <Box sx={classes.wrapperInput}>
-                  <input
-                    list="autocompleteOff"
-                    aria-autocomplete="none"
-                    onChange={onChange}
-                    onBlur={onBlur}
-                    style={{
-                      outline: 'none',
-                      boxShadow: 'none',
-                      border: 'none',
-                      marginLeft: '16px',
-                      height: '34px',
-                      fontSize: '16px',
-                    }}
-                  />
-                </Box>
-              </Box>
-            );
+    <Box>
+      {label && (
+        <Typography variant="body2" fontWeight={300} mb={1}>
+          {label}
+        </Typography>
+      )}
+
+      <TextField
+        fullWidth
+        size="small"
+        variant="outlined"
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+        placeholder={placeholder}
+        slotProps={{
+          input: {
+            startAdornment: (
+              <InputAdornment position="start">
+                <Select
+                  value={prefix}
+                  onChange={e => setPrefix(e.target.value)}
+                  variant="standard"
+                  disableUnderline
+                  sx={{ pr: 3 }}
+                >
+                  <MenuItem value={phonePrefixes.BG}>
+                    <Box display="flex" alignItems="center" gap={1} className="pr-1">
+                      <img src={FlagBulgaria} alt="BG" height={16} />
+                      {phonePrefixes.BG}
+                    </Box>
+                  </MenuItem>
+                </Select>
+              </InputAdornment>
+            ),
           },
-          style: { paddingLeft: '16px' },
-        },
-      }}
-    />
+        }}
+      />
+    </Box>
   );
 };
 

@@ -1,11 +1,15 @@
 import { Typography } from '@/components/ui';
+import { setStepFilled } from '@/store/onboarding/onboardingSlice';
 import { useMemo, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import DeclarationStep from './DeclarationStep';
 import GdprStep from './GdprStep';
 import PepsStep from './PepsStep';
 import SurveyStep from './SurveyStep';
 
 const GdprPage: React.FC = () => {
+  const dispatch = useDispatch();
+
   const [gdprStep, setGdprStep] = useState(0);
 
   const handleGdprBack = () => {
@@ -14,6 +18,7 @@ const GdprPage: React.FC = () => {
 
   const handleGdprNext = () => {
     setGdprStep(prev => (prev < 4 ? prev + 1 : 0));
+    dispatch(setStepFilled({ index: gdprStep, filled: true }));
   };
 
   const gdprContent = useMemo(() => {
@@ -25,7 +30,7 @@ const GdprPage: React.FC = () => {
       case 2:
         return <SurveyStep onBack={handleGdprBack} onNext={handleGdprNext} />;
       case 3:
-        return <PepsStep onBack={handleGdprBack} onNext={handleGdprNext} />;
+        return <PepsStep onBack={handleGdprBack} />;
       default:
         return <Typography variant="body1">Unknown step: {gdprStep}</Typography>;
     }

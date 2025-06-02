@@ -21,13 +21,21 @@ const CardFlip: React.FC<Props> = ({ mini = false, frontId = frontIdimg, backId 
 
   return (
     <div className={classes.cardFlip}>
-      <div className={`${classes.cardContainer} p-2`}>
+      <div className={`${mini ? classes.cardContainerMini : classes.cardContainer + 'p-2'}`}>
         <div className={`${classes.cardInner} ${!showFront ? classes.cardInnerFlipped : ''}`}>
           <div className={`${classes.cardFace} ${classes.cardFront}`}>
-            <img src={frontId} alt="Front of ID card" className="rounded-lg" />
+            <img
+              src={frontId}
+              alt="Front of ID card"
+              className="w-full h-full object-cover rounded-lg"
+            />
           </div>
           <div className={`${classes.cardFace} ${classes.cardBack}`}>
-            <img src={backId} alt="Back of ID card" className="rounded-lg" />
+            <img
+              src={backId}
+              alt="Back of ID card"
+              className="w-full h-full object-cover rounded-lg"
+            />
           </div>
         </div>
       </div>

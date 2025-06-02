@@ -6,7 +6,6 @@
   "validationMVRValid": "The document is valid in the Ministry of Interior database.",
   "customerDataSaved": "Customer data is saved. Risk classification - {{riskClass}}. Assigned customer number - <b>{{customerNumber}}</b>",
   "customerDataSavedFirstText": "Customer data is saved!",
-  "customerDataSavedSecondText": "Risk classification -",
   "customerDataSavedThirdText": "Assigned customer number -",
   "continueToContactDetails": "Continue to contact details",
   "newClient": "New client",

@@ -66,6 +66,10 @@ export const commonThemeOptions = {
       fontWeight: 'var(--typography-body2-font-weight, 500)',
       color: 'var(--clr-text-secondary, hsl(0, 0%, 45%))',
     },
+    subtitle2: {
+      fontSize: 'var(--typography-subtitle2-font-size, 0.85rem)',
+      fontWeight: 'var(--typography-subtitle2-font-weight, 800)',
+    },
     caption: {
       fontSize: 'var(--typography-caption-font-size, 0.5rem)',
       fontWeight: 'var(--typography-caption-font-weight, 300)',
@@ -374,6 +378,17 @@ export const commonThemeOptions = {
           borderRadius: 'var(--base-border-radius, 0.5rem)',
           backgroundColor: 'var(--clr-bg-1, #fff)',
           boxShadow: 'var(--base-box-shadow)',
+          '&.no-shadow': {
+            boxShadow: 'none',
+          },
+        },
+      },
+    },
+    MuiCardContent: {
+      styleOverrides: {
+        root: {
+          overflow: 'auto',
+          maxHeight: '100%',
         },
       },
     },

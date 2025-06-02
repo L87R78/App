@@ -6,9 +6,10 @@ import FlipCard from '../flipCard/FlipCard';
 
 const ClientInfoCard = () => {
   const { t } = useI18nNamespaces(['pages/client/client_info_aside']);
-  const { scanData, clientNumber, clientType, contactData } = useSelector(
+  const { scanData, clientNumber, clientType } = useSelector(
     (state: RootState) => state.onboarding.idDocument
   );
+  const { email, phoneNumber } = useSelector((state: RootState) => state.onboarding.clientData);
 
   return (
     <div className="relative h-full w-1/4">
@@ -17,7 +18,7 @@ const ClientInfoCard = () => {
       </Typography>
 
       <section className="h-full pt-[60px]">
-        <Card className="h-full">
+        <Card className="h-full" noShadow>
           <FlipCard mini />
 
           <section className="mt-3 flex flex-col gap-2">
@@ -57,19 +58,19 @@ const ClientInfoCard = () => {
               </>
             )}
 
-            {contactData?.phone && (
+            {phoneNumber && (
               <>
                 <Typography variant="body2">
                   {t('pages/client/client_info_aside:telephone')}
                 </Typography>
-                <Typography variant="body1">{contactData.phone}</Typography>
+                <Typography variant="body1">{phoneNumber}</Typography>
               </>
             )}
 
-            {contactData?.email && (
+            {email && (
               <>
                 <Typography variant="body2">{t('pages/client/client_info_aside:email')}</Typography>
-                <Typography variant="body1">{contactData.email}</Typography>
+                <Typography variant="body1">{email}</Typography>
               </>
             )}
           </section>

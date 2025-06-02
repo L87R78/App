@@ -6,7 +6,6 @@
 	"validationMVRValid": "Документът е валиден в базата на МВР",
 	"customerDataSaved": "Данните за клиента са запазени. Рискова категория - {riskClass}. Клиентски номер - {customerNumber}",
 	"customerDataSavedFirstText": "Данните за клиента се запазени!",
-	"customerDataSavedSecondText": "Класификация на риска -",
 	"customerDataSavedThirdText": "Присвоен клиентски номер -",
 	"continueToContactDetails": "Продължете към данни за контакт",
 	"newClient": "Нов клиент",

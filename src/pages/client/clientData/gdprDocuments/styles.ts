@@ -51,4 +51,22 @@ export const classes = {
   htmlContent: '',
   declarationSection: '',
   modalContent: 'flex h-full w-full flex-col items-center justify-center gap-4 text-center',
+
+  //gdpr aside
+  gdprAsideContainer: 'relative mr-10 h-full w-1/5',
+  section: 'h-full pt-[60px]',
+  card: 'h-full',
+  clientInfoWrapper: 'p-2 rounded-lg border border-(--clr-info) bg-(--clr-info-light) mb-2',
+  stepContainer: 'mt-2 flex flex-col gap-1',
+  stepItem: 'flex flex-col gap-3 p-2',
+  pill: 'rounded-lg flex gap-2 px-3 py-1 items-center justify-center border-2 border-transparent',
+  pillValidated: 'bg-(--clr-primary-light) border-2 !border-(--clr-primary)',
+  pillNonValidated: 'bg-(--clr-accent-light)',
+  actionWrapper: 'flex flex-col gap-2',
+  actionSection: 'flex items-center justify-between font-bold',
+  docCountText: 'text-(--clr-primary) text-sm',
+  iconButton: 'flex items-center justify-center rounded-full bg-(--clr-primary)',
+  disabledIconCircle: 'cursor-not-allowed bg-text-disabled',
+
+  centeredModalContent: 'flex flex-col items-center justify-center gap-4 text-center',
 };

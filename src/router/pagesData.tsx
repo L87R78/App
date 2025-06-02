@@ -1,7 +1,7 @@
 import { lazy, type JSX } from 'react';
 
 const Home = lazy(() => import('../pages/home/Home'));
-const ClientAccounds = lazy(() => import('../pages/client/clientAccounds/ClientAccounds'));
+const ClientAccounts = lazy(() => import('../pages/client/clientAccounds/ClientAccounts'));
 const ClientData = lazy(() => import('../pages/client/clientData/ClientData'));
 const Transfers = lazy(() => import('../pages/paymentOperations/transfers/Transfers'));
 const Error = lazy(() => import('../pages/error/Error'));
@@ -42,7 +42,7 @@ const pagesData: Page[] = [
   },
   {
     path: route.clientAccounts,
-    Component: () => <ClientAccounds />,
+    Component: () => <ClientAccounts />,
     title: 'clientAccounts',
     scopes: [],
   },

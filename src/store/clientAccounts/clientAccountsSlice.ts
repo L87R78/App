@@ -6,10 +6,7 @@ import { addClientAccounts } from './clientAccountsApi';
 
 const initialState = {
   status: ResponseStatus.IDLE,
-  productGroups: 'Standard Current Accounts with Plan',
-  products: 'Choose a product',
-  currency: 'EUR',
-  plans: 'Basic',
+  data: null,
   hasClientAccountsData: false,
 };
 
@@ -17,8 +14,11 @@ const clientAccountsSlice = createSlice({
   name: 'clientAccounts',
   initialState,
   reducers: {
-    setClientAccounts: (state, action) => {
+    setHasClientAccountsData: (state, action) => {
       state.hasClientAccountsData = action.payload;
+    },
+    setClientAccountsData: (state, action) => {
+      state.data = action.payload;
     },
   },
   extraReducers: builder => {
@@ -36,7 +36,7 @@ const clientAccountsSlice = createSlice({
   },
 });
 
-export const { setClientAccounts } = clientAccountsSlice.actions;
+export const { setHasClientAccountsData, setClientAccountsData } = clientAccountsSlice.actions;
 
 export const clientAccountsReducer = clientAccountsSlice.reducer;
 export default clientAccountsSlice;

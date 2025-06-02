@@ -117,13 +117,6 @@ export const IdDocumentPage = ({
 
             <div className={classes.wrapperCustomerDataSavedTexts}>
               <p className={classes.customerDataSavedText}>
-                {t('pages/client/client_data/id_document:customerDataSavedSecondText')}
-              </p>
-              <p className={classes.riskClassificationValue}>Low risk</p>
-            </div>
-
-            <div className={classes.wrapperCustomerDataSavedTexts}>
-              <p className={classes.customerDataSavedText}>
                 {t('pages/client/client_data/id_document:customerDataSavedThirdText')}
               </p>
               <p className={classes.assignedCustomerValue}>{clientNumber}</p>

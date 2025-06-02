@@ -3,7 +3,7 @@ import deepmerge from 'deepmerge';
 
 import { OnboardingStep, ResponseStatus } from '@/common/constants';
 import { IdDocumentScanType } from '@/types';
-import { addClient, fetchOnboardingData } from './onboardingApi';
+import { addClient, fetchOnboardingData, signGdprDocuments } from './onboardingApi';
 
 // --- Initial Scan Data ---
 export const initialScanData: IdDocumentScanType = {
@@ -43,6 +43,7 @@ export const initialScanData: IdDocumentScanType = {
 };
 
 // --- Types ---
+// Id Document
 export interface IdDocumentState {
   isDbScanAvailable: boolean;
   isGoToContactDataModalVisible: boolean;
@@ -51,12 +52,23 @@ export interface IdDocumentState {
   dbScan: IdDocumentScanType;
   clientNumber: number | string;
   clientType: string;
-  contactData: {
-    email: string;
-    phone: string;
-  };
 }
 
+//GDPR
+export interface GdprStep {
+  label: string;
+  filled: boolean;
+  signed: boolean;
+  id: string;
+}
+
+export interface GdprState {
+  gdprSteps: GdprStep[];
+  selectedQueue: string[];
+  areDocumentsSignedSuccessfully: boolean;
+}
+
+//Onboarding
 export interface OnboardingDataState {
   isStartService: boolean;
 }
@@ -65,10 +77,11 @@ export interface OnboardingState {
   idDocument: IdDocumentState;
   onboardingData: OnboardingDataState;
   status: ResponseStatus;
+  gdpr: GdprState;
 }
 
 // --- Initial State ---
-const initialState: OnboardingState = {
+const initialState = {
   idDocument: {
     isDbScanAvailable: false,
     isGoToContactDataModalVisible: false,
@@ -77,15 +90,25 @@ const initialState: OnboardingState = {
     dbScan: {} as IdDocumentScanType,
     clientNumber: '',
     clientType: 'Mass client',
-    contactData: {
-      email: '',
-      phone: '',
-    },
+  },
+  gdpr: {
+    gdprSteps: [
+      { label: 'gdpr', filled: false, signed: false, id: 'gdpr' },
+      { label: 'DOPKdeclaration', filled: false, signed: false, id: 'dopk' },
+      { label: 'survey', filled: false, signed: false, id: 'survey' },
+      { label: 'peps', filled: false, signed: false, id: 'peps' },
+    ],
+    selectedQueue: [] as string[],
+    areDocumentsSignedSuccessfully: false,
   },
   onboardingData: {
     isStartService: false,
   },
   status: ResponseStatus.IDLE,
+  clientData: {
+    phoneNumber: '',
+    email: '',
+  },
 };
 
 // --- Slice ---
@@ -108,6 +131,57 @@ const onboardingSlice = createSlice({
     addOnboardingData(state, action: PayloadAction<OnboardingStep>) {
       if (action.payload === OnboardingStep.StartService) {
         state.onboardingData.isStartService = true;
+      }
+    },
+    setContactData(state, action) {
+      const { phoneNumber, email } = action.payload;
+
+      state.clientData.phoneNumber = phoneNumber;
+      state.clientData.email = email;
+    },
+    toggleSelectedQueue(state, action: PayloadAction<string>) {
+      const id = action.payload;
+      const index = state.gdpr.selectedQueue.indexOf(id);
+      if (index === -1) {
+        state.gdpr.selectedQueue.push(id);
+      } else {
+        state.gdpr.selectedQueue.splice(index, 1);
+      }
+    },
+    pushAllToQueue(state) {
+      state.gdpr.gdprSteps.forEach(step => {
+        if (!state.gdpr.selectedQueue.includes(step.id)) {
+          state.gdpr.selectedQueue.push(step.id);
+        }
+      });
+    },
+    signAllDocuments(state) {
+      state.gdpr.gdprSteps.forEach(step => {
+        step.signed = true;
+      });
+    },
+    resetGDPRState(state) {
+      state.gdpr.gdprSteps = [
+        { label: 'gdpr', filled: false, signed: false, id: 'gdpr' },
+        { label: 'DOPKdeclaration', filled: false, signed: false, id: 'dopk' },
+        { label: 'survey', filled: false, signed: false, id: 'survey' },
+        { label: 'peps', filled: false, signed: false, id: 'peps' },
+      ];
+      state.gdpr.selectedQueue = [];
+    },
+    setStepFilled(state, action: PayloadAction<{ index: number; filled: boolean }>) {
+      const index = action.payload.index;
+      console.log('index: ', index);
+      if (index >= 0 && index < state.gdpr.gdprSteps.length) {
+        const step = state.gdpr.gdprSteps[index];
+        step.filled = action.payload.filled;
+      }
+    },
+    setStepSigned(state, action: PayloadAction<{ index: number; signed: boolean }>) {
+      const index = action.payload.index;
+      if (index >= 0 && index < state.gdpr.gdprSteps.length) {
+        const step = state.gdpr.gdprSteps[index];
+        step.signed = action.payload.signed;
       }
     },
   },
@@ -140,15 +214,32 @@ const onboardingSlice = createSlice({
           state.idDocument.dbScan = payload.scanData;
           state.idDocument.clientNumber = payload.clientNumber;
           state.idDocument.clientType = payload.clientType;
-          state.idDocument.contactData = payload.contactData;
         }
       })
       .addCase(fetchOnboardingData.rejected, (state, action) => {
         const { status } = action.payload as { status: ResponseStatus };
         state.status = status;
+      })
+      .addCase(signGdprDocuments.rejected, (state, action) => {
+        const { status } = action.payload as { status: ResponseStatus };
+        state.status = status;
+        state.gdpr.areDocumentsSignedSuccessfully = false;
+      })
+      .addCase(signGdprDocuments.pending, state => {
+        state.status = ResponseStatus.PENDING;
+      })
+      .addCase(signGdprDocuments.fulfilled, (state, action) => {
+        const payload = action.payload;
+        state.status = ResponseStatus.FULFILLED;
+        if (payload) {
+          state.gdpr.areDocumentsSignedSuccessfully = payload.success;
+        }
       });
   },
 });
+
+export const areAllFilledAndSigned = (state: GdprState): boolean =>
+  state.gdprSteps.every(step => step.filled && step.signed);
 
 // --- Exports ---
 export const {
@@ -157,6 +248,13 @@ export const {
   setCheckAgainModalVisible,
   updateScanDataField,
   addOnboardingData,
+  setContactData,
+  toggleSelectedQueue,
+  pushAllToQueue,
+  signAllDocuments,
+  resetGDPRState,
+  setStepFilled,
+  setStepSigned,
 } = onboardingSlice.actions;
 
 export const onboardingReducer = onboardingSlice.reducer;

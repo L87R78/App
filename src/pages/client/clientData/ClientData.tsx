@@ -4,7 +4,9 @@ import { useI18nNamespaces } from '@/hooks';
 import { RootState } from '@/store';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
+import ContactData from './contactData/ContactData';
 import GdprPage from './gdprDocuments/GDPR.page';
+import GdprAside from './gdprDocuments/GdprAside';
 import { IdDocumentPage } from './idDocument/IdDocument.page';
 
 const ClientData = () => {
@@ -18,21 +20,19 @@ const ClientData = () => {
   const [gdprTabContent, setGdprTabContent] = useState<React.ReactNode>(null);
 
   const scanData = useSelector((state: RootState) => state.onboarding.idDocument.scanData);
-  const memoizedScanData = useMemo(() => scanData, [scanData]);
+  const clientNumber = useSelector((state: RootState) => state.onboarding.idDocument.clientNumber);
+  const memorizedScanData = useMemo(() => scanData, [scanData]);
+  const memorizedClientNumber = useMemo(() => clientNumber, [clientNumber]);
 
   const handleChangeTab = useCallback((tabIndex: number) => {
     setCurrentTab(tabIndex);
-  }, []);
-
-  const handleChangeTabContent = useCallback((content: React.ReactNode) => {
-    setGdprTabContent(content);
   }, []);
 
   useEffect(() => {
     if (!gdprTabContent) {
       setGdprTabContent(<GdprPage />);
     }
-  }, [gdprTabContent, handleChangeTabContent]);
+  }, [gdprTabContent]);
 
   const tabs = useMemo(
     () => [
@@ -42,26 +42,30 @@ const ClientData = () => {
       },
       {
         label: t('shared/button:contactData'),
-        content: <p>Contact data</p>,
-        disabled: !memoizedScanData,
+        content: <ContactData handleChangeTab={handleChangeTab} />,
+        disabled: !memorizedScanData,
       },
       {
         label: t('shared/button:GDPRdocuments'),
         content: gdprTabContent,
-        disabled: !memoizedScanData,
+        disabled: !memorizedScanData,
       },
     ],
-    [memoizedScanData, handleChangeTab, handleChangeTabContent, gdprTabContent, t]
+    [memorizedScanData, handleChangeTab, gdprTabContent, t]
   );
 
-  const showAside = currentTab === 1;
+  const showClientInfoAside = currentTab === 1;
+  const showGdprAside = currentTab === 2;
 
   return (
     <div className="flex gap-6 w-full h-full">
       <div className="w-full">
         <Tabs tabs={tabs} value={currentTab} onChange={handleChangeTab} />
       </div>
-      {showAside && <ClientInfoAside />}
+      {showClientInfoAside && <ClientInfoAside />}
+      {showGdprAside && (
+        <GdprAside clientName={memorizedScanData?.nameLatin} clientNumber={memorizedClientNumber} />
+      )}
     </div>
   );
 };

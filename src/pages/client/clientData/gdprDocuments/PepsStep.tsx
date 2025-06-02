@@ -1,10 +1,20 @@
-import { LoadingModal } from '@/components';
-import { Button, Checkbox, Modal, TextField } from '@/components/ui';
+import { LoadingModal, SuccessModal } from '@/components';
+import { Button, Checkbox, Container, Modal, TextField, Typography } from '@/components/ui';
 import { useI18nNamespaces } from '@/hooks';
+import { useAppDispatch } from '@/store/hooks';
+import { signGdprDocuments } from '@/store/onboarding/onboardingApi';
+import { pushAllToQueue, setStepFilled } from '@/store/onboarding/onboardingSlice';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { classes } from './styles';
+import { useNavigate } from 'react-router-dom';
+import { route } from '@/router';
 
-const GdprPepsPage: React.FC<{ onBack: () => void; onNext: () => void }> = ({ onBack, onNext }) => {
+const GdprPepsPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const dispatchRequest = useAppDispatch();
+
   const { t } = useI18nNamespaces([
     'pages/client/client_data/gdpr',
     'shared/button',
@@ -16,19 +26,20 @@ const GdprPepsPage: React.FC<{ onBack: () => void; onNext: () => void }> = ({ on
   const [hasBeenConnected, setHasBeenConnected] = useState(false);
   const [isReadyModalVisible, setIsReadyModalVisible] = useState(false);
   const [isSignButtonVisible, setIsSignButtonVisible] = useState(false);
-  const [isSigningModalVisible, setIsSigningModalVisible] = useState(false);
-  const [isSignedSuccessModalVisible, setIsSignedSuccessModalVisible] = useState(false);
 
   const saveAndContinue = () => {
+    dispatch(setStepFilled({ index: 3, filled: true }));
     setIsReadyModalVisible(true);
   };
 
   const signDocuments = () => {
-    setIsSigningModalVisible(true);
-    setTimeout(() => {
-      setIsSigningModalVisible(false);
-      setIsSignedSuccessModalVisible(true);
-    }, 1000);
+    dispatchRequest(signGdprDocuments())
+  };
+
+  const handleContinueToSignature = () => {
+    setIsReadyModalVisible(false);
+    setIsSignButtonVisible(true);
+    dispatch(pushAllToQueue());
   };
 
   return (
@@ -110,39 +121,26 @@ const GdprPepsPage: React.FC<{ onBack: () => void; onNext: () => void }> = ({ on
 
       <Modal open={isReadyModalVisible} onClose={() => setIsReadyModalVisible(false)}>
         {/* todo:addicon           */}
-        <>
-          <h4>{t('pages/client/client_data/gdpr:allDocsAreFilled')}</h4>
-          <h4 className={classes.textBold}>
-            {t('pages/client/client_data/gdpr:continueToSignOrPrint')}
-          </h4>
-          <Button
-            onClick={() => {
-              setIsReadyModalVisible(false);
-              setIsSignButtonVisible(true);
-            }}
-          >
-            OK
-          </Button>
-        </>
+        <section className={classes.centeredModalContent}>
+          <Container>
+            <Typography variant="h6">
+              {t('pages/client/client_data/gdpr:allDocsAreFilled')}
+            </Typography>
+            <Typography variant="body1">
+              {t('pages/client/client_data/gdpr:continueToSignOrPrint')}
+            </Typography>
+          </Container>
+          <Button onClick={() => handleContinueToSignature()}>OK</Button>
+        </section>
       </Modal>
 
-      {isSigningModalVisible && (
-        <LoadingModal text={t('pages/client/client_data/gdpr:docsAreBeingSigned')} />
-      )}
+      <LoadingModal text={t('pages/client/client_data/gdpr:docsAreBeingSigned')} />
 
-      <Modal open={isSignedSuccessModalVisible} onClose={() => {}}>
-        <div className={classes.sectionCentered}>
-          {/* todo:add icon */}
-          <h4>{t('pages/client/client_data/gdpr:docsSignedSuccessfuly')}</h4>
-          <Button
-            onClick={() => {
-              // todo:Navigate to page
-            }}
-          >
-            {t('shared/button:continue')}
-          </Button>
-        </div>
-      </Modal>
+      <SuccessModal
+        onContinue={() => {navigate(route.paymentOperationsTranfers)}}
+        message={t('pages/client/client_data/gdpr:docsSignedSuccessfuly')}
+        buttonMessage={t('shared/button:continue')}
+      />
     </div>
   );
 };

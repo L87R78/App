@@ -1,12 +1,19 @@
-import IconArrowLeft from '@/assets/icons/iconArrowLeft.svg';
-import iconDsk from '@/assets/icons/iconDSK.svg';
-import iconManager from '@/assets/icons/iconManager.svg';
-import imageDskLogo from '@/assets/images/imageDskLogo.svg';
-import { Box, Drawer, Typography } from '@/components/ui';
-import { route } from '@/router';
 import { IconButton } from '@mui/material';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+
+import { Box, Drawer, Typography } from '@/components/ui';
+import { route } from '@/router';
+
+import IconArrowLeft from '@/assets/icons/iconArrowLeft.svg';
+import iconCoinsHand from '@/assets/icons/iconCoinsHand.svg';
+import iconCreditCard from '@/assets/icons/iconCreditCard.svg';
+import iconDsk from '@/assets/icons/iconDSK.svg';
+import iconSwitchHorizontal from '@/assets/icons/iconSwitchHorizontal.svg';
+import iconUser from '@/assets/icons/iconUser.svg';
+import iconUsers from '@/assets/icons/iconUsers.svg';
+import imageDskLogo from '@/assets/images/imageDskLogo.svg';
+
 import {
   accounts,
   client,
@@ -70,13 +77,13 @@ const Navigation = (props: NavigationProps) => {
     route && navigate(route);
   };
 
-  const handleRenderFirstButton = (title: string, isOpen: boolean) => {
+  const handleRenderFirstButton = (title: string, isOpen: boolean, icon: string) => {
     return (
       <>
         <IconButton sx={classes.iconArrowMenu(isOpen)}>
           <img src={IconArrowLeft} alt="" />
         </IconButton>
-        <Box sx={classes.menuIcon} component="img" src={iconManager} />
+        <Box sx={classes.menuIcon} component="img" src={icon} />
         <Typography sx={classes.menuFirstTitle} variant="h5">
           {title}
         </Typography>
@@ -149,7 +156,7 @@ const Navigation = (props: NavigationProps) => {
                     }));
                   }}
                 >
-                  {handleRenderFirstButton(client, clientButtons.isClientItems)}
+                  {handleRenderFirstButton(client, clientButtons.isClientItems, iconUsers)}
                 </Box>
               </Box>
 
@@ -219,7 +226,11 @@ const Navigation = (props: NavigationProps) => {
                     }));
                   }}
                 >
-                  {handleRenderFirstButton(dailyBanking, dailyBankingButtons.isDailyBankingItems)}
+                  {handleRenderFirstButton(
+                    dailyBanking,
+                    dailyBankingButtons.isDailyBankingItems,
+                    iconUser
+                  )}
                 </Box>
               </Box>
               {dailyBankingButtons.isDailyBankingItems && (
@@ -315,7 +326,8 @@ const Navigation = (props: NavigationProps) => {
                 >
                   {handleRenderFirstButton(
                     paymentOperations,
-                    paymentOperationsButtons.isPaymentOperations
+                    paymentOperationsButtons.isPaymentOperations,
+                    iconCoinsHand
                   )}
                 </Box>
               </Box>
@@ -348,7 +360,8 @@ const Navigation = (props: NavigationProps) => {
                 >
                   {handleRenderFirstButton(
                     creditProducts,
-                    creditProductsButtons.isCreditProductsButtons
+                    creditProductsButtons.isCreditProductsButtons,
+                    iconSwitchHorizontal
                   )}
                 </Box>
               </Box>
@@ -381,7 +394,8 @@ const Navigation = (props: NavigationProps) => {
                 >
                   {handleRenderFirstButton(
                     savingInvestments,
-                    savingInvestmentsButtons.isSavingInvestments
+                    savingInvestmentsButtons.isSavingInvestments,
+                    iconCreditCard
                   )}
                 </Box>
               </Box>
@@ -443,31 +457,39 @@ const Navigation = (props: NavigationProps) => {
         ) : (
           <Box sx={classes.wrapperShortNavigation}>
             <Box sx={classes.buttonShortNavigation}>
-              <Box component="img" src={iconManager} onClick={() => handleNavigate(route.home)} />
+              <Box component="img" src={iconUsers} onClick={() => handleNavigate(route.home)} />
               <Typography sx={classes.menuShortTitle} variant="h5">
                 {client}
               </Typography>
             </Box>
             <Box sx={classes.buttonShortNavigation}>
-              <Box component="img" src={iconManager} onClick={() => handleNavigate(route.home)} />
+              <Box component="img" src={iconUser} onClick={() => handleNavigate(route.home)} />
               <Typography sx={classes.menuShortTitle} variant="h5">
                 {dailyBanking}
               </Typography>
             </Box>
             <Box sx={classes.buttonShortNavigation}>
-              <Box component="img" src={iconManager} onClick={() => handleNavigate(route.home)} />
+              <Box component="img" src={iconCoinsHand} onClick={() => handleNavigate(route.home)} />
               <Typography sx={classes.menuShortTitle} variant="h5">
                 {paymentOperations}
               </Typography>
             </Box>
             <Box sx={classes.buttonShortNavigation}>
-              <Box component="img" src={iconManager} onClick={() => handleNavigate(route.home)} />
+              <Box
+                component="img"
+                src={iconSwitchHorizontal}
+                onClick={() => handleNavigate(route.home)}
+              />
               <Typography sx={classes.menuShortTitle} variant="h5">
                 {creditProducts}
               </Typography>
             </Box>
             <Box sx={classes.buttonShortNavigation}>
-              <Box component="img" src={iconManager} onClick={() => handleNavigate(route.home)} />
+              <Box
+                component="img"
+                src={iconCreditCard}
+                onClick={() => handleNavigate(route.home)}
+              />
               <Typography sx={classes.menuShortTitle} variant="h5">
                 {savingInvestments}
               </Typography>

@@ -9,6 +9,7 @@ import {
 import React, { type ReactNode } from 'react';
 
 type Props = {
+  noShadow?: boolean;
   title?: string | ReactNode;
   cardContent?: ReactNode;
   actions?: ReactNode;
@@ -18,6 +19,7 @@ type Props = {
 } & CardProps;
 
 const Card: React.FC<Props> = ({
+  noShadow = false,
   title,
   cardContent,
   actions,
@@ -27,7 +29,7 @@ const Card: React.FC<Props> = ({
   ...props
 }) => {
   return (
-    <MuiCard className={`${className} p-3 m-2`} {...props}>
+    <MuiCard className={`${className} p-3 m-2 ${noShadow ? 'no-shadow' : ''}`} {...props}>
       {title && (
         <CardHeader
           title={

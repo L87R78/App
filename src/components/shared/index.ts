@@ -1,3 +1,5 @@
+export { default as LineChart } from './charts/LineChart/LineChart';
+export { default as ClientInfoAside } from './clientInfoAside/ClientInfoAside';
 export { default as FlipCard } from './flipCard/FlipCard';
 export { default as Footer } from './footer/Footer';
 export { default as Header } from './header/Header';
@@ -6,5 +8,5 @@ export { default as Loader } from './loader/Loader';
 export { default as LoadingModal } from './loadingModal/LoadingModal';
 export { default as Navigation } from './navigation/Navigation';
 export { default as SmsCode } from './smsCode/SmsCode';
-export { default as ClientInfoAside } from './clientInfoAside/ClientInfoAside';
+export { default as SuccessModal } from './successModal/SuccessModal';
 export { createSvgIconFromString } from './svgIcon/SvgIcon';

@@ -8,6 +8,7 @@ export const classes = {
   flipCardButtonWrapper: 'mt-3 flex justify-center',
 
   cardContainer: 'w-[360px] h-[230px] [perspective:1000px] ',
+  cardContainerMini: 'w-full h-[150px] [perspective:1000px]',
   cardContainerModal: 'w-[650px] h-[450px] [perspective:1000px] mx-auto',
   cardInner:
     'relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d]',
