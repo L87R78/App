@@ -1,10 +1,13 @@
-import { OnboardingStep } from '@/common/constants';
 import { AppDispatch } from '@/store';
 import { addOnbordingData } from '@/store/onbording/onbordingSlice';
 import { Box, Button, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
+
+import arrowNarrowDown from '@/assets/icons/arrowNarrowDown.svg';
+import clockRewind from '@/assets/icons/clockRewind.svg';
+import { OnboardingStep } from '@/common/constants';
 import { LineChart } from '@/components';
-import iconNotifications from '@/assets/icons/iconNotifications.svg';
+
 import classes from './styles';
 
 const Home = () => {
@@ -53,7 +56,7 @@ const Home = () => {
               Total number of customers served
             </Typography>
             <Box sx={classes.wrapperTotalCustomersInfo}>
-              <Box component="img" src={iconNotifications} />
+              <Box component="img" src={arrowNarrowDown} />
               <Typography sx={classes.descriptionPercentageChart} variant="h3">
                 21.3% lower this mounth
               </Typography>
@@ -65,7 +68,7 @@ const Home = () => {
         {/* <Box sx={classes.secondSectionChart}></Box> */}
         <Box sx={classes.containerSecondSectionChart}>
           <Box sx={classes.wrapperLastClientInfo}>
-            <Box component="img" src={iconNotifications} />
+            <Box component="img" src={clockRewind} />
             <Box>
               <Typography sx={classes.titleChart} variant="h3">
                 Last client: Ivan Georgiev Ivanov

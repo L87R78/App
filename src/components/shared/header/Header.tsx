@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { Avatar } from '@mui/material';
+
 import iconNotifications from '@/assets/icons/iconNotifications.svg';
-// import imageAvatar from '@/assets/images/imageAvatar.svg';
 import { Box, Button, Typography } from '@/components/ui';
 
 import classes from './styles';
@@ -10,66 +10,43 @@ interface HeaderProps {
 }
 const Header = (props: HeaderProps) => {
   const { isOpenNavigation } = props;
-  const [isOpenUserSettings, setIsOpenUserSettings] = useState(false);
-  const settingsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (settingsRef.current && !settingsRef.current.contains(event.target as Node)) {
-        setIsOpenUserSettings(false);
-      }
-    };
-
-    if (isOpenUserSettings) {
-      document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isOpenUserSettings]);
 
   return (
     <Box sx={classes.containerHeader(isOpenNavigation)}>
       <Box sx={classes.wrapperContent}>
-        <Box
-          ref={settingsRef}
-          sx={classes.wrapperAvatar}
-          onClick={() => setIsOpenUserSettings(!isOpenUserSettings)}
-        >
-          <Box component="img" sx={classes.iconAvatar} src={iconNotifications} />
+        <Box sx={classes.wrapperAvatar}>
+          <Avatar sx={classes.avatar}>MP</Avatar>
           <Box>
             <Typography variant="h3" sx={classes.name}>
-              Мария Петрова
+              Maria Petrova
             </Typography>
             <Typography variant="h4" sx={classes.jobTitle}>
               Business Consultant
             </Typography>
           </Box>
-          {isOpenUserSettings && (
+          {/* // TODO: add user settings menu */}
+          {/* {isOpenUserSettings && (
             <Box sx={classes.wrapperUserSettings}>
               <Box sx={classes.wrapperRow}>
-                <Box component="img" sx={classes.iconAvatar} src={iconNotifications} />
+                <Box component="img" sx={classes.iconSettings} src={iconNotifications} />
                 <Typography variant="h4" sx={classes.settingsText}>
                   Settings
                 </Typography>
               </Box>
               <Box sx={classes.wrapperRow}>
-                <Box component="img" sx={classes.iconAvatar} src={iconNotifications} />
+                <Box component="img" sx={classes.iconSettings} src={iconNotifications} />
                 <Typography variant="h4" sx={classes.settingsText}>
                   Favorites
                 </Typography>
               </Box>
               <Box sx={classes.wrapperRow}>
-                <Box component="img" sx={classes.iconAvatar} src={iconNotifications} />
+                <Box component="img" sx={classes.iconSettings} src={iconNotifications} />
                 <Typography variant="h4" sx={classes.settingsText}>
                   Log Out
                 </Typography>
               </Box>
             </Box>
-          )}
+          )} */}
         </Box>
         <Box component="img" sx={classes.iconNotifications} src={iconNotifications} />
         <Button variant="contained" color="primary" size="small">

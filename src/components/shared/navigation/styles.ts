@@ -56,7 +56,6 @@ const classes = {
     alignItems: 'center',
     padding: '8px',
     borderRadius: '8px',
-    border: '1px solid #CACED5',
     cursor: 'pointer',
   },
   menuShortTitle: {

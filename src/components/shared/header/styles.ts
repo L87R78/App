@@ -15,7 +15,16 @@ const classes = {
   wrapperContent: {
     display: 'flex',
   },
-  iconAvatar: {
+  avatar: {
+    background: 'var(--clr-bg-1)',
+    width: 40,
+    height: 40,
+    fontSize: 16,
+    color: 'var(--clr-text)',
+    border: '1px solid var(--clr-outline-primary)',
+    marginRight: '8px',
+  },
+  iconSettings: {
     marginRight: '8px',
   },
   iconNotifications: {
@@ -23,6 +32,7 @@ const classes = {
   },
   wrapperAvatar: {
     display: 'flex',
+    alignItems: 'center',
     position: 'relative',
     cursor: 'pointer',
   },
@@ -46,6 +56,7 @@ const classes = {
     borderRadius: '16px',
     padding: '8px',
     width: '100%',
+    zIndex: '999 !important',
   },
   wrapperRow: {
     display: 'flex',
