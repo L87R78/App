@@ -1,6 +1,5 @@
 {
-	"betweenOwnAccounts": "Между собствени сметки",
-	"toBankAccount": "Към банкова сметка",
+
 	"fromAccount": "От сметка",
 	"toAccount": "Към сметка",
 	"transferTax": "Такса за превод",
@@ -19,5 +18,5 @@
 	"reason": "Основание",
 	"valueDate": "Вальорна дата",
 	"selectAccount": "Изберете сметка",
-	"feeCollectionAccount": "Fee Collection Account"
+	"feeCollectionAccount": "Сметка за извличане на такса"
 }

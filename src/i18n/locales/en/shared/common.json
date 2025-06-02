@@ -1,13 +1,14 @@
 {
-	"businessAnalyst": "Business Analyst",
-	"or": "or",
-	"pleaseWait": "Please wait",
-	"loading": "Loading...",
-	"yes": "Yes",
-	"no": "No",
-	"permanentAddressMatches": "Permanent address matches the communication address",
-	"next": "Next",
-	"result": "Result",
-	"continue": "Continue",
-	"operationSuccessfullyCompleted": "Operation successfully completed"
+  "businessAnalyst": "Business Analyst",
+  "or": "or",
+  "pleaseWait": "Please wait",
+  "loading": "Loading...",
+  "yes": "Yes",
+  "no": "No",
+  "permanentAddressMatches": "Permanent address matches the communication address",
+  "next": "Next",
+  "result": "Result",
+  "continue": "Continue",
+  "operationSuccessfullyCompleted": "Operation successfully completed",
+  "documentsAreBeingSigned": "Documents are being signed..."
 }

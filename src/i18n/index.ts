@@ -8,6 +8,7 @@ import enGdpr from './locales/en/pages/client/client_data/gdpr.json';
 import enIdDocument from './locales/en/pages/client/client_data/id_document.json';
 import enClientInfoAside from './locales/en/pages/client/client_info_aside.json';
 import enHome from './locales/en/pages/home.json';
+import enPOcommon from './locales/en/pages/payment_operations/common.json';
 import enTransfers from './locales/en/pages/payment_operations/transfers.json';
 import enFavourites from './locales/en/pages/user/favorites.json';
 import enSettings from './locales/en/pages/user/settings.json';
@@ -24,6 +25,7 @@ import bgGdpr from './locales/bg/pages/client/client_data/gdpr.json';
 import bgIdDocument from './locales/bg/pages/client/client_data/id_document.json';
 import bgClientInfoAside from './locales/bg/pages/client/client_info_aside.json';
 import bgHome from './locales/bg/pages/home.json';
+import bgPOcommon from './locales/bg/pages/payment_operations/common.json';
 import bgTransfers from './locales/bg/pages/payment_operations/transfers.json';
 import bgFavourites from './locales/bg/pages/user/favorites.json';
 import bgSettings from './locales/bg/pages/user/settings.json';
@@ -49,6 +51,7 @@ i18n.use(initReactI18next).init({
     'pages/client/client_data/gdpr',
     'pages/client/client_data/id_document',
     'pages/payment_operations/transfers',
+    'pages/payment_operations/common',
     'pages/user/favourites',
     'pages/user/settings',
   ],
@@ -67,6 +70,7 @@ i18n.use(initReactI18next).init({
       'pages/client/client_data/gdpr': enGdpr,
       'pages/client/client_data/id_document': enIdDocument,
       'pages/payment_operations/transfers': enTransfers,
+      'pages/payment_operations/common': enPOcommon,
       'pages/user/favourites': enFavourites,
       'pages/user/settings': enSettings,
     },
@@ -83,6 +87,7 @@ i18n.use(initReactI18next).init({
       'pages/client/client_data/gdpr': bgGdpr,
       'pages/client/client_data/id_document': bgIdDocument,
       'pages/payment_operations/transfers': bgTransfers,
+      'pages/payment_operations/common': bgPOcommon,
       'pages/user/favourites': bgFavourites,
       'pages/user/settings': bgSettings,
     },

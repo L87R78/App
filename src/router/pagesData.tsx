@@ -1,9 +1,9 @@
 import { lazy, type JSX } from 'react';
 
 const Home = lazy(() => import('../pages/home/Home'));
-const ClientAccounts = lazy(() => import('../pages/client/clientAccounds/ClientAccounts'));
-const ClientData = lazy(() => import('../pages/client/clientData/ClientData'));
-const Transfers = lazy(() => import('../pages/paymentOperations/transfers/Transfers'));
+const ClientAccounts = lazy(() => import('../pages/client/clientAccounts/ClientAccounts.page'));
+const ClientData = lazy(() => import('../pages/client/clientData/ClientData.page'));
+const Transfers = lazy(() => import('../pages/paymentOperations/Transfers.page'));
 const Error = lazy(() => import('../pages/error/Error'));
 
 const route = {

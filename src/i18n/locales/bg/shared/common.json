@@ -1,13 +1,14 @@
 {
-	"businessAnalyst": "Business Analyst BG",
-	"or": "или",
-	"pleaseWait": "Моля, изчакайте",
-	"loading": "Зареждане...",
-	"yes": "Да",
-	"no": "Не",
-	"permanentAddressMatches": "Permanent address matches the communication address BG",
-	"next": "Next BG",
-	"result": "Резултат",
-	"continue": "Продължи",
-	"operationSuccessfullyCompleted": "Операцията извършена успешно"
+  "businessAnalyst": "Business Analyst BG",
+  "or": "или",
+  "pleaseWait": "Моля, изчакайте",
+  "loading": "Зареждане...",
+  "yes": "Да",
+  "no": "Не",
+  "permanentAddressMatches": "Permanent address matches the communication address BG",
+  "next": "Next BG",
+  "result": "Резултат",
+  "continue": "Продължи",
+  "operationSuccessfullyCompleted": "Операцията извършена успешно",
+  "documentsAreBeingSigned": "Документите се подписват..."
 }

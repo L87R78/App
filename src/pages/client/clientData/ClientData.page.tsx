@@ -2,9 +2,9 @@ import { ClientInfoAside } from '@/components';
 import { Tabs } from '@/components/ui';
 import { useI18nNamespaces } from '@/hooks';
 import { RootState } from '@/store';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
-import ContactData from './contactData/ContactData';
+import ContactData from './contactData/ContactData.page';
 import GdprPage from './gdprDocuments/GDPR.page';
 import GdprAside from './gdprDocuments/GdprAside';
 import { IdDocumentPage } from './idDocument/IdDocument.page';
@@ -17,7 +17,6 @@ const ClientData = () => {
   ]);
 
   const [currentTab, setCurrentTab] = useState(0);
-  const [gdprTabContent, setGdprTabContent] = useState<React.ReactNode>(null);
 
   const scanData = useSelector((state: RootState) => state.onboarding.idDocument.scanData);
   const clientNumber = useSelector((state: RootState) => state.onboarding.idDocument.clientNumber);
@@ -27,12 +26,6 @@ const ClientData = () => {
   const handleChangeTab = useCallback((tabIndex: number) => {
     setCurrentTab(tabIndex);
   }, []);
-
-  useEffect(() => {
-    if (!gdprTabContent) {
-      setGdprTabContent(<GdprPage />);
-    }
-  }, [gdprTabContent]);
 
   const tabs = useMemo(
     () => [
@@ -47,11 +40,11 @@ const ClientData = () => {
       },
       {
         label: t('shared/button:GDPRdocuments'),
-        content: gdprTabContent,
+        content: <GdprPage />,
         disabled: !memorizedScanData,
       },
     ],
-    [memorizedScanData, handleChangeTab, gdprTabContent, t]
+    [memorizedScanData, handleChangeTab, t]
   );
 
   const showClientInfoAside = currentTab === 1;

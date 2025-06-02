@@ -1,3 +1,4 @@
+export { default as AccountSelect } from './accountSelect/AccountSelect';
 export { default as LineChart } from './charts/LineChart/LineChart';
 export { default as ClientInfoAside } from './clientInfoAside/ClientInfoAside';
 export { default as FlipCard } from './flipCard/FlipCard';

@@ -147,7 +147,7 @@ const GdprAside = ({
 
       <SuccessModal
         onContinue={() => {
-          navigate(route.paymentOperationsTranfers);
+          navigate(route.clientAccounts);
         }}
         message={t('pages/client/client_data/gdpr:docsSignedSuccessfuly')}
         buttonMessage={t('shared/button:continue')}

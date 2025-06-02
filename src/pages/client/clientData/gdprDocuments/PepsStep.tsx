@@ -1,14 +1,14 @@
 import { LoadingModal, SuccessModal } from '@/components';
 import { Button, Checkbox, Container, Modal, TextField, Typography } from '@/components/ui';
 import { useI18nNamespaces } from '@/hooks';
+import { route } from '@/router';
 import { useAppDispatch } from '@/store/hooks';
 import { signGdprDocuments } from '@/store/onboarding/onboardingApi';
 import { pushAllToQueue, setStepFilled } from '@/store/onboarding/onboardingSlice';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { classes } from './styles';
 import { useNavigate } from 'react-router-dom';
-import { route } from '@/router';
+import { classes } from './styles';
 
 const GdprPepsPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const GdprPepsPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   };
 
   const signDocuments = () => {
-    dispatchRequest(signGdprDocuments())
+    dispatchRequest(signGdprDocuments());
   };
 
   const handleContinueToSignature = () => {
@@ -137,7 +137,9 @@ const GdprPepsPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
       <LoadingModal text={t('pages/client/client_data/gdpr:docsAreBeingSigned')} />
 
       <SuccessModal
-        onContinue={() => {navigate(route.paymentOperationsTranfers)}}
+        onContinue={() => {
+          navigate(route.clientAccounts);
+        }}
         message={t('pages/client/client_data/gdpr:docsSignedSuccessfuly')}
         buttonMessage={t('shared/button:continue')}
       />

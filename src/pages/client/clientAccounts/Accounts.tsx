@@ -3,11 +3,11 @@ import { useState } from 'react';
 import { Typography } from '@mui/material';
 
 import { Box, Button, Checkbox, Divider, Select } from '@/components/ui';
-import { useSelector, useDispatch } from 'react-redux';
-import type { RootState } from '@/store/index';
 import { setClientAccountsData } from '@/store/clientAccounts/clientAccountsSlice';
+import type { RootState } from '@/store/index';
+import { useDispatch, useSelector } from 'react-redux';
 import NoAccounts from './NoAccounts';
-import { productGroups, products, currency, plans } from './constants';
+import { currency, plans, productGroups, products } from './constants';
 import classes from './styles';
 
 const Accounts = () => {
