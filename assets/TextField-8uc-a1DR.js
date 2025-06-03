@@ -1,0 +1,1 @@
+import{j as t,X as r}from"./index-DL26XWdV.js";import{T as l}from"./TextField-BPWFWzKn.js";const x=({label:a,className:i="",labelClassName:s="",...e})=>t.jsxs("div",{className:`flex flex-col gap-1 ${i}`,children:[a&&t.jsx(r,{variant:"body2",fontWeight:300,className:s,children:a}),t.jsx(l,{fullWidth:!0,variant:e.variant||"outlined",size:e.size||"small",...e})]});export{x as T};
