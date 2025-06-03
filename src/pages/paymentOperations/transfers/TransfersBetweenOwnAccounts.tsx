@@ -129,7 +129,7 @@ const TransfersBetweenOwnAccounts = () => {
 
       <SuccessModal
         onContinue={() => {
-          navigate(route.clientAccounts);
+          navigate(route.home);
         }}
         message={t('pages/client/client_data/gdpr:docsSignedSuccessfuly')}
         buttonMessage={t('shared/button:continue')}
