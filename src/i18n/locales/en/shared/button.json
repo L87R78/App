@@ -58,5 +58,6 @@
   "E-signature": "E-signature",
   "print": "Print and Sign",
   "signAndContinue": "Sign and continue",
-  "digitalSignature": "Digital Signature"
+  "digitalSignature": "Digital Signature",
+  "view": "View"
 }

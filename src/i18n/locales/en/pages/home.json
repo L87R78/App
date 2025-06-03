@@ -1,20 +1,20 @@
 {
-	"title": "Welcome",
-	"description": "Have a nice day",
-	"clientIdentification": "Client identification",
-	"scanIDdocument": "Scan ID document",
-	"pleaseInsertTheDocumentIntoTheDevice": "Please insert the document into the device",
-	"clientAgreesTheDocument": "The client agrees that the document provided by him may be scanned.",
-	"theDocumentIsCurrentlyBeingScanned": "The document is currently being scanned",
-	"loadingLoadingChartArea": "Loading chart area...",
-	"waitingTickets": "Waiting tickets",
-	"lastClient": "Last client:",
-	"clientID": "Client ID:",
-	"allClientsForDay": "All clients for the day",
-	"chart": {
-		"servedCustomers": "Served customers",
-		"totalNumberCustomersServed": "Total number of customers served",
-		"totalCustomers": "Total customers",
-		"lowerThisMonth": "lower this month"
-	}
+  "title": "Welcome {{text}}",
+  "description": "Have a nice day",
+  "clientIdentification": "Client identification",
+  "scanIDdocument": "Scan ID document",
+  "pleaseInsertTheDocumentIntoTheDevice": "Please insert the document into the device",
+  "clientAgreesTheDocument": "The client agrees that the document provided by him may be scanned.",
+  "theDocumentIsCurrentlyBeingScanned": "The document is currently being scanned",
+  "loadingLoadingChartArea": "Loading chart area...",
+  "waitingTickets": "Waiting tickets",
+  "lastClient": "Last client: {{text}}",
+  "clientID": "Client ID: {{value}}",
+  "allClientsForDay": "All clients for the day",
+  "chart": {
+    "servedCustomers": "Served customers",
+    "totalNumberCustomersServed": "Total number of customers served",
+    "totalCustomers": "Total customers",
+    "lowerThisMonth": "{{value}} lower this month"
+  }
 }

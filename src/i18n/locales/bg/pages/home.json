@@ -1,20 +1,20 @@
 {
-	"title": "Здравейте",
-	"description": "Приятен ден",
-	"clientIdentification": "Client identification BG",
-	"scanIDdocument": "Scan ID document BG",
-	"pleaseInsertTheDocumentIntoTheDevice": "Please insert the document into the device BG",
-	"clientAgreesTheDocument": "The client agrees that the document provided by him may be scanned. BG",
-	"theDocumentIsCurrentlyBeingScanned": "The document is currently being scanned BG",
-	"loadingLoadingChartArea": "Loading chart area... BG",
-	"waitingTickets": "Waiting tickets BG",
-	"lastClient": "Last client BG:",
-	"clientID": "Client ID BG: ",
-	"allClientsForDay": "All clients for the day BG",
-	"chart": {
-		"servedCustomers": "Served customers BG",
-		"totalNumberCustomersServed": "Total number of customers served BG",
-		"totalCustomers": "Total customers BG",
-		"lowerThisMonth": "lower this month BG"
-	}
+  "title": "Здравейте {{text}}",
+  "description": "Приятен ден",
+  "clientIdentification": "Client identification BG",
+  "scanIDdocument": "Scan ID document BG",
+  "pleaseInsertTheDocumentIntoTheDevice": "Please insert the document into the device BG",
+  "clientAgreesTheDocument": "The client agrees that the document provided by him may be scanned. BG",
+  "theDocumentIsCurrentlyBeingScanned": "The document is currently being scanned BG",
+  "loadingLoadingChartArea": "Loading chart area... BG",
+  "waitingTickets": "Waiting tickets BG",
+  "lastClient": "Last client: {{text}} BG:",
+  "clientID": "Client ID: {{value}} BG: ",
+  "allClientsForDay": "All clients for the day BG",
+  "chart": {
+    "servedCustomers": "Served customers BG",
+    "totalNumberCustomersServed": "Total number of customers served BG",
+    "totalCustomers": "Total customers BG",
+    "lowerThisMonth": "{{value}} lower this month BG"
+  }
 }

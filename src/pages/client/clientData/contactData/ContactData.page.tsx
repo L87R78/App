@@ -13,12 +13,7 @@ import classes from './styles';
 const ContactData: React.FC<{ handleChangeTab: (index: number) => void }> = ({
   handleChangeTab,
 }) => {
-  const { t } = useI18nNamespaces([
-    'pages/client/client_data/id_document',
-    'shared/common',
-    'shared/label',
-    'shared/button',
-  ]);
+  const { t } = useI18nNamespaces([]);
 
   const clientData = useSelector((state: RootState) => state.onboarding.clientData);
   const dispatch = useDispatch();
@@ -42,10 +37,12 @@ const ContactData: React.FC<{ handleChangeTab: (index: number) => void }> = ({
     return (
       <Box sx={classes.wrapperModal}>
         <Typography sx={classes.titleModal} variant="h2">
-          Enter SMS code
+          {t('pages/client/client_data/contact_data:enterSMScode')}
         </Typography>
         <Typography sx={classes.description} variant="h4">
-          {`The confirmation code has been sent to: ${clientData.phoneNumber}`}
+          {t('pages/client/client_data/contact_data:confirmationCode', {
+            value: clientData.phoneNumber,
+          })}
         </Typography>
         <SmsCode
           onComplete={() => {
@@ -90,7 +87,7 @@ const ContactData: React.FC<{ handleChangeTab: (index: number) => void }> = ({
       <Card>
         <Box sx={classes.wrapperFields}>
           <InputPhone
-            label="Phone number"
+            label={t('shared/common:phoneNumber')}
             handleOnBlur={e => {
               setContactDataState(prev => ({
                 ...prev,
@@ -99,7 +96,7 @@ const ContactData: React.FC<{ handleChangeTab: (index: number) => void }> = ({
             }}
           />
           <TextField
-            label="Email"
+            label={t('shared/common:email')}
             value={contactDataState.email}
             onChange={e =>
               setContactDataState(prev => ({

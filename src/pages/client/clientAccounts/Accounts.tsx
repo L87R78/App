@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import { Typography } from '@mui/material';
 
+import { useI18nNamespaces } from '@/hooks';
+
 import { Box, Button, Checkbox, Divider, Select } from '@/components/ui';
 import { setClientAccountsData } from '@/store/clientAccounts/clientAccountsSlice';
 import type { RootState } from '@/store/index';
@@ -11,6 +13,8 @@ import { currency, plans, productGroups, products } from './constants';
 import classes from './styles';
 
 const Accounts = () => {
+  const { t } = useI18nNamespaces(['shared/label']);
+
   const dispatch = useDispatch();
   const clientAccounts = useSelector((state: RootState) => state.clientAccounts);
 
@@ -37,7 +41,7 @@ const Accounts = () => {
           <Select
             value={accounts.productGroups}
             options={productGroups}
-            label="Select Product Group"
+            label={t('shared/label:selectProductGroup')}
             onChange={e => {
               setAccounts(prev => ({
                 ...prev,
@@ -48,7 +52,7 @@ const Accounts = () => {
           <Select
             value={accounts.currency}
             options={currency}
-            label="Select Currency"
+            label={t('shared/label:selectCurrency')}
             onChange={e => {
               setAccounts(prev => ({
                 ...prev,
@@ -62,7 +66,7 @@ const Accounts = () => {
             disabled={accounts.productGroups === productGroups[0].value}
             value={accounts.product}
             options={products}
-            label="Product"
+            label={t('shared/label:product')}
             onChange={e => {
               setAccounts(prev => ({
                 ...prev,
@@ -74,7 +78,7 @@ const Accounts = () => {
             disabled={accounts.productGroups !== productGroups[0].value}
             value={accounts.selectPlan}
             options={plans}
-            label="Select Plan"
+            label={t('shared/label:selectPlan')}
             onChange={e => {
               setAccounts(prev => ({
                 ...prev,
@@ -86,7 +90,7 @@ const Accounts = () => {
       </Box>
       {!accounts.isConfirm && (
         <Box sx={classes.wrapperActions}>
-          <Button variant="outlined">Cancel</Button>
+          <Button variant="outlined">{t('shared/button:cancel')}</Button>
           <Button
             variant="contained"
             onClick={() => {
@@ -96,7 +100,7 @@ const Accounts = () => {
               }));
             }}
           >
-            confirm
+            {t('shared/button:confirm')}
           </Button>
         </Box>
       )}
@@ -106,43 +110,45 @@ const Accounts = () => {
           <Box sx={classes.wrapperReletedDocuments}>
             <Divider />
             <Typography sx={classes.titleRelatedDocuments} variant="h3">
-              Related documents - signature and print
+              {t('pages/client/client_data/client_accounts:documents:title')}
             </Typography>
             <Box sx={classes.wrapperClientAccountCheckboxes}>
               <Box sx={classes.wrapperCheckboxes}>
                 <Checkbox
                   checked
                   disabled
-                  label="I confirm that I have read and understand the terms and conditions"
+                  label={t('pages/client/client_data/client_accounts:documents:contract')}
                 />
                 <Checkbox
                   checked
                   disabled
-                  label="I confirm that I have read and understand the terms and conditions"
+                  label={t(
+                    'pages/client/client_data/client_accounts:documents:additionalAgreement'
+                  )}
                 />
               </Box>
               <Box sx={classes.wrapperCheckboxes}>
                 <Checkbox
                   checked
                   disabled
-                  label="I confirm that I have read and understand the terms and conditions"
+                  label={t('pages/client/client_data/client_accounts:documents:declaration')}
                 />
                 <Checkbox
                   checked
                   disabled
-                  label="I confirm that I have read and understand the terms and conditions"
+                  label={t('pages/client/client_data/client_accounts:documents:investorNewsletter')}
                 />
               </Box>
             </Box>
           </Box>
           <Box sx={classes.wrapperActions}>
-            <Button variant="outlined">Cancel</Button>
+            <Button variant="outlined">{t('shared/button:cancel')}</Button>
             <Box sx={{ display: 'flex', gap: '24px' }}>
               <Button variant="outlined" onClick={() => {}}>
-                Print
+                {t('pages/client/client_data/gdpr:print')}
               </Button>
               <Button variant="contained" onClick={handleSignature}>
-                E-signature
+                {t('shared/button:E-signature')}
               </Button>
             </Box>
           </Box>

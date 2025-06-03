@@ -2,6 +2,7 @@ import { Box, Button, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { useI18nNamespaces } from '@/hooks';
 import { AppDispatch } from '@/store';
 import { addOnboardingData } from '@/store/onboarding/onboardingSlice';
 
@@ -15,6 +16,8 @@ import ClientIdentification from './modals/ClientIdentification';
 import classes from './styles';
 
 const Home = () => {
+  const { t } = useI18nNamespaces([]);
+
   const dispatch = useDispatch<AppDispatch>();
   const [isStartService, setIsStartService] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -30,14 +33,14 @@ const Home = () => {
       <Box sx={classes.layout}>
         <Box sx={classes.containerWelcome}>
           <Typography sx={classes.title} variant="h1">
-            Welcome, Maria
+            {t('pages/home:title', { text: 'Maria' })}
           </Typography>
           <Typography sx={classes.description} variant="h2">
-            Успешен ден
+            {t('pages/home:description')}
           </Typography>
           <Box sx={classes.wrapperWaitingBox}>
             <Typography sx={classes.textWaitingPeople} variant="h2">
-              Чакащи
+              {t('pages/home:waitingTickets')}
             </Typography>
             <Typography sx={classes.textWaitingPeople} variant="h2">
               2
@@ -49,10 +52,10 @@ const Home = () => {
               variant="contained"
               onClick={() => setIsStartService(true)}
             >
-              Следваш клиент
+              {t('shared/button:nextClient')}
             </Button>
             <Button disabled={!isStartService} variant="outlined" onClick={handleStartService}>
-              Стартирай обслужване
+              {t('shared/button:startService')}
             </Button>
           </Box>
         </Box>
@@ -60,7 +63,7 @@ const Home = () => {
           <Box sx={classes.containerFirstSectionChart}>
             <Box sx={classes.wrapperBoxInfo}>
               <Typography sx={classes.titleChart} variant="h3">
-                Served customers
+                {t('pages/home:chart:servedCustomers')}
               </Typography>
               <Typography sx={classes.titleChart} variant="h3">
                 354
@@ -68,12 +71,13 @@ const Home = () => {
             </Box>
             <Box sx={classes.wrapperBoxInfo}>
               <Typography sx={classes.descriptionChart} variant="h3">
-                Total number of customers served
+                {t('pages/home:chart:totalNumberCustomersServed')}
               </Typography>
               <Box sx={classes.wrapperTotalCustomersInfo}>
                 <Box component="img" src={arrowNarrowDown} />
                 <Typography sx={classes.descriptionPercentageChart} variant="h3">
-                  21.3% lower this mounth
+                  {/* {`${'21.3%'} ${t('pages/home:chart:lowerThisMonth')}`} */}
+                  {t('pages/home:chart:lowerThisMonth', { value: '21.3%' })}
                 </Typography>
               </Box>
             </Box>
@@ -84,19 +88,19 @@ const Home = () => {
               <Box component="img" src={clockRewind} />
               <Box>
                 <Typography sx={classes.titleChart} variant="h3">
-                  Last client: Ivan Georgiev Ivanov
+                  {t('pages/home:lastClient', { text: 'Ivan Georgiev Ivanov' })}
                 </Typography>
                 <Typography sx={classes.descriptionChart} variant="h3">
-                  Client ID: 23254565466543
+                  {t('pages/home:clientID', { value: '23254565466543' })}
                 </Typography>
               </Box>
             </Box>
             <Box sx={classes.wrapperAllClientInfo}>
               <Typography sx={classes.titleAllClients} variant="h3">
-                All clients for the day
+                {t('pages/home:allClientsForDay')}
               </Typography>
               <Button disabled variant="text">
-                View
+                {t('shared/button:view')}
               </Button>
             </Box>
           </Box>
