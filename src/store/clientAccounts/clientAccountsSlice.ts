@@ -1,8 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
-
 import { ResponseStatus } from '@/common/constants';
-
-import { addClientAccounts } from './clientAccountsApi';
+import { createSlice } from '@reduxjs/toolkit';
+import { createClientAccount } from './clientAccountsApi';
 
 const initialState = {
   status: ResponseStatus.IDLE,
@@ -23,13 +21,13 @@ const clientAccountsSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(addClientAccounts.pending, state => {
+      .addCase(createClientAccount.pending, state => {
         state.status = ResponseStatus.PENDING;
       })
-      .addCase(addClientAccounts.fulfilled, (state, action) => {
+      .addCase(createClientAccount.fulfilled, (state, action) => {
         state.status = ResponseStatus.FULFILLED;
       })
-      .addCase(addClientAccounts.rejected, (state, action) => {
+      .addCase(createClientAccount.rejected, (state, action) => {
         const { status } = action.payload as { status: ResponseStatus };
         state.status = status;
       });

@@ -1,4 +1,4 @@
-import { FlipCard } from '@/components/shared';
+import { FlipCard, LoadingModal } from '@/components/shared';
 import {
   Alert,
   Button,
@@ -347,6 +347,7 @@ const IdDocument = ({
           </Card>
         </main>
       </section>
+      <LoadingModal />
     </div>
   );
 };

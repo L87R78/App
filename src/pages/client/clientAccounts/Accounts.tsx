@@ -2,16 +2,31 @@ import { useState } from 'react';
 
 import { Typography } from '@mui/material';
 
+import { LoadingModal, SuccessModal } from '@/components/shared';
 import { Box, Button, Checkbox, Divider, Select } from '@/components/ui';
+import { useI18nNamespaces } from '@/hooks';
+import { route } from '@/router';
+import { createClientAccount } from '@/store/clientAccounts/clientAccountsApi';
 import { setClientAccountsData } from '@/store/clientAccounts/clientAccountsSlice';
+import { useAppDispatch } from '@/store/hooks';
 import type { RootState } from '@/store/index';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import NoAccounts from './NoAccounts';
 import { currency, plans, productGroups, products } from './constants';
 import classes from './styles';
 
 const Accounts = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const dispatchRequest = useAppDispatch();
+
+  const { t } = useI18nNamespaces([
+    'pages/client/client_data/client_accounts',
+    'shared/button',
+    'shared/label',
+  ]);
+
   const clientAccounts = useSelector((state: RootState) => state.clientAccounts);
 
   const [accounts, setAccounts] = useState({
@@ -24,6 +39,7 @@ const Accounts = () => {
 
   const handleSignature = () => {
     dispatch(setClientAccountsData(accounts));
+    dispatchRequest(createClientAccount(accounts));
   };
 
   if (!clientAccounts.hasClientAccountsData) {
@@ -37,7 +53,7 @@ const Accounts = () => {
           <Select
             value={accounts.productGroups}
             options={productGroups}
-            label="Select Product Group"
+            label={t('shared/label:selectProductGroup')}
             onChange={e => {
               setAccounts(prev => ({
                 ...prev,
@@ -48,7 +64,7 @@ const Accounts = () => {
           <Select
             value={accounts.currency}
             options={currency}
-            label="Select Currency"
+            label={t('shared/label:selectCurrency')}
             onChange={e => {
               setAccounts(prev => ({
                 ...prev,
@@ -62,7 +78,7 @@ const Accounts = () => {
             disabled={accounts.productGroups === productGroups[0].value}
             value={accounts.product}
             options={products}
-            label="Product"
+            label={t('pages/client/client_data/client_accounts:products.chooseProduct')}
             onChange={e => {
               setAccounts(prev => ({
                 ...prev,
@@ -74,7 +90,7 @@ const Accounts = () => {
             disabled={accounts.productGroups !== productGroups[0].value}
             value={accounts.selectPlan}
             options={plans}
-            label="Select Plan"
+            label={t('pages/client/client_data/client_accounts:openingTypes.choosePlan')}
             onChange={e => {
               setAccounts(prev => ({
                 ...prev,
@@ -86,7 +102,7 @@ const Accounts = () => {
       </Box>
       {!accounts.isConfirm && (
         <Box sx={classes.wrapperActions}>
-          <Button variant="outlined">Cancel</Button>
+          <Button variant="outlined">{t('shared/buttons:cancel')}</Button>
           <Button
             variant="contained"
             onClick={() => {
@@ -96,7 +112,7 @@ const Accounts = () => {
               }));
             }}
           >
-            confirm
+            {t('shared/buttons:confirm')}
           </Button>
         </Box>
       )}
@@ -106,31 +122,33 @@ const Accounts = () => {
           <Box sx={classes.wrapperReletedDocuments}>
             <Divider />
             <Typography sx={classes.titleRelatedDocuments} variant="h3">
-              Related documents - signature and print
+              {t('pages/client/client_data/client_accounts:documents.title')}
             </Typography>
             <Box sx={classes.wrapperClientAccountCheckboxes}>
               <Box sx={classes.wrapperCheckboxes}>
                 <Checkbox
                   checked
                   disabled
-                  label="I confirm that I have read and understand the terms and conditions"
+                  label={t('pages/client/client_data/client_accounts:documents.contract')}
                 />
                 <Checkbox
                   checked
                   disabled
-                  label="I confirm that I have read and understand the terms and conditions"
+                  label={t(
+                    'pages/client/client_data/client_accounts:documents.additionalAgreement'
+                  )}
                 />
               </Box>
               <Box sx={classes.wrapperCheckboxes}>
                 <Checkbox
                   checked
                   disabled
-                  label="I confirm that I have read and understand the terms and conditions"
+                  label={t('pages/client/client_data/client_accounts:documents.declaration')}
                 />
                 <Checkbox
                   checked
                   disabled
-                  label="I confirm that I have read and understand the terms and conditions"
+                  label={t('pages/client/client_data/client_accounts:documents.investorNewsletter')}
                 />
               </Box>
             </Box>
@@ -139,15 +157,24 @@ const Accounts = () => {
             <Button variant="outlined">Cancel</Button>
             <Box sx={{ display: 'flex', gap: '24px' }}>
               <Button variant="outlined" onClick={() => {}}>
-                Print
+                {t('shared/buttons:print')}
               </Button>
               <Button variant="contained" onClick={handleSignature}>
-                E-signature
+                {t('shared/buttons:E-signature')}
               </Button>
             </Box>
           </Box>
         </>
       )}
+      <LoadingModal text={t('pages/client/client_data/gdpr:docsAreBeingSigned')} />
+
+      <SuccessModal
+        onContinue={() => {
+          navigate(route.paymentOperationsTranfers);
+        }}
+        message={t('pages/client/client_data/gdpr:docsSignedSuccessfuly')}
+        buttonMessage="OK"
+      />
     </Box>
   );
 };

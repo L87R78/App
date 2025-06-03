@@ -2,7 +2,11 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 
 import { ResponseStatus } from '@/common/constants';
-import { setLoadingModalVisibility, setSuccessModalVisibility } from '../common/commonSlice';
+import {
+  resetModals,
+  setLoadingModalVisibility,
+  setSuccessModalVisibility,
+} from '../common/commonSlice';
 import { setSliceError } from '../error/errorSlice';
 import { initialScanData } from './onboardingSlice';
 
@@ -19,6 +23,8 @@ const addClient = createAsyncThunk(
 
       return { clientNumber: '893283912321' };
     } catch (error: unknown) {
+      dispatch(resetModals());
+
       if (error instanceof AxiosError && error.response) {
         dispatch(
           setSliceError({
@@ -50,7 +56,8 @@ const fetchOnboardingData = createAsyncThunk(
 
       return result;
     } catch (error: unknown) {
-      dispatch(setLoadingModalVisibility(false));
+      dispatch(resetModals());
+
       if (error instanceof AxiosError && error.response) {
         dispatch(
           setSliceError({
@@ -88,6 +95,8 @@ const signGdprDocuments = createAsyncThunk(
       dispatch(setLoadingModalVisibility(false));
 
       if (error instanceof AxiosError && error.response) {
+        dispatch(resetModals());
+
         dispatch(
           setSliceError({
             httpStatusCode: error.response.status,

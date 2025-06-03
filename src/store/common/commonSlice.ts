@@ -20,10 +20,15 @@ const commonSlice = createSlice({
     setSuccessModalVisibility(state, action: PayloadAction<boolean>) {
       state.isSuccessModalVisible = action.payload;
     },
+    resetModals(state) {
+  state.isLoadingModalVisible = false;
+  state.isSuccessModalVisible = false;
+}
+
   },
 });
 
-export const { setLoadingModalVisibility, setSuccessModalVisibility } = commonSlice.actions;
+export const { setLoadingModalVisibility, setSuccessModalVisibility, resetModals } = commonSlice.actions;
 
 export const commonReducer = commonSlice.reducer;
 export default commonReducer;

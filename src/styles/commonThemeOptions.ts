@@ -387,11 +387,14 @@ export const commonThemeOptions = {
     MuiCardContent: {
       styleOverrides: {
         root: {
-          overflow: 'auto',
           maxHeight: '100%',
+          '&.scrollable': {
+            overflow: 'auto',
+          },
         },
       },
     },
+
     MuiTabs: {
       styleOverrides: {
         root: {

@@ -233,6 +233,9 @@ const onboardingSlice = createSlice({
         state.status = ResponseStatus.FULFILLED;
         if (payload) {
           state.gdpr.areDocumentsSignedSuccessfully = payload.success;
+          state.gdpr.gdprSteps.forEach(step => {
+            step.signed = true;
+          });
         }
       });
   },

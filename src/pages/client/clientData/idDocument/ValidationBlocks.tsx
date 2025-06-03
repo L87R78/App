@@ -46,4 +46,4 @@ const ValidationBlock: React.FC<ValidationBlockProps> = ({
   );
 };
 
-export default ValidationBlock;
+export default React.memo(ValidationBlock);

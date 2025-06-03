@@ -36,7 +36,7 @@ const GdprAside = ({
     <div className=" h-full w-1/4">
       <section className="h-full pt-[60px]">
         <Card className="h-full" noShadow>
-          <CardContent>
+          <CardContent className="scrollable">
             <Box className={classes.clientInfoWrapper}>
               <Typography variant="body2">
                 {t('pages/client/client_info_aside:clientName')}

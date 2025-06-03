@@ -1,23 +1,30 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios, { AxiosError } from 'axios';
+import { AxiosError } from 'axios';
 
 import { ResponseStatus } from '@/common/constants';
+import { resetModals, setLoadingModalVisibility, setSuccessModalVisibility } from '../common/commonSlice';
 import { setSliceError } from '../error/errorSlice';
 
-const addClientAccounts = createAsyncThunk(
+const createClientAccount = createAsyncThunk(
   'clientAccounts',
   async (
     data: any, // TODO: Add request data type
     { dispatch, rejectWithValue }
   ) => {
-    const url = ''; // TODO: add url
+    // const url = ''; // TODO: add url
 
     try {
-      const result = await axios.post(url, data);
+      dispatch(setLoadingModalVisibility(true));
 
-      return result.data;
+      // const result = await axios.post(url, data);
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      dispatch(setLoadingModalVisibility(false));
+      dispatch(setSuccessModalVisibility(true));
+
+      return { success: true, signedAt: new Date().toISOString() };
     } catch (error: unknown) {
       if (error instanceof AxiosError && error.response) {
+        dispatch(resetModals())
         dispatch(
           setSliceError({
             httpStatusCode: error.response.status,
@@ -31,4 +38,4 @@ const addClientAccounts = createAsyncThunk(
   }
 );
 
-export { addClientAccounts };
+export { createClientAccount };
