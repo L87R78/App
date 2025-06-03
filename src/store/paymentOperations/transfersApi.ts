@@ -12,10 +12,9 @@ import { setSliceError } from '../error/errorSlice';
 const signAndTransfer = createAsyncThunk(
   'paymentOperations',
   async (
-    data: any, // TODO: Add request data type
+    _: any, // TODO: Add request data type
     { dispatch, rejectWithValue }
   ) => {
-    const url = ''; // TODO: add url
     try {
       dispatch(setLoadingModalVisibility(true));
 
