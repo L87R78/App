@@ -3,7 +3,7 @@
   "no": "Не",
   "back": "Назад",
   "nextClient": "Следващ клиент",
-  "startService": "Следващ клиент",
+  "startService": "Стартирай обслужване",
   "clientInformation": "Информация за клиент",
   "clientAccounts": "Клиентски акаунти",
   "productsSummary": "Products summary BG",
@@ -58,5 +58,6 @@
   "E-signature": "Е-подпис",
   "print": "Принтирай",
   "signAndContinue": "Подпиши и продължи",
-  "digitalSignature": "Digital Signature"
+  "digitalSignature": "Digital Signature",
+  "view": "Преглед"
 }

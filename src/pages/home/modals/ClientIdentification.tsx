@@ -1,3 +1,4 @@
+import { useI18nNamespaces } from '@/hooks';
 import { Box, Button, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -15,6 +16,8 @@ import { clientIdentification } from '@/common/constants';
 import classes from './styles';
 
 const ClientIdentification = () => {
+  const { t } = useI18nNamespaces([]);
+
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -37,14 +40,14 @@ const ClientIdentification = () => {
     return (
       <Box sx={classes.modalContent}>
         <Typography sx={classes.titleModal} variant="h2">
-          Client identification
+          {t('pages/home:clientIdentification')}
         </Typography>
         <InputIds options={clientIdentification} handleOnBlur={() => {}} />
         <Typography sx={classes.secondTextModal} variant="h3">
-          or
+          {t('shared/common:or')}
         </Typography>
         <Button variant="contained" onClick={() => setIsOpenModalScanDocument(true)}>
-          OCR
+          {t('shared/button:OCR')}
         </Button>
       </Box>
     );
@@ -55,21 +58,18 @@ const ClientIdentification = () => {
       <Box sx={classes.modalContent}>
         <Box component="img" src={iconScan} />
         <Typography sx={classes.titleModal} variant="h2">
-          Scan ID document
+          {t('pages/home:scanIDdocument')}
         </Typography>
         <Typography sx={classes.secondTextModal} variant="h4">
-          Please insert the document into the device
+          {t('pages/home:pleaseInsertTheDocumentIntoTheDevice')}
         </Typography>
-        <Checkbox
-          checked
-          label={'The client agrees that the document provided by him may be scanned.'}
-        />
+        <Checkbox checked label={t('pages/home:clientAgreesTheDocument')} />
         <Box sx={classes.wrapperActions}>
           <Button variant="outlined" onClick={() => setIsOpenModalScanDocument(false)}>
-            Back
+            {t('shared/button:back')}
           </Button>
           <Button variant="contained" onClick={handleGoToIDdocument}>
-            Scan
+            {t('shared/button:scan')}
           </Button>
         </Box>
       </Box>

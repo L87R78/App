@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Typography } from '@mui/material';
 
 import { LoadingModal, SuccessModal } from '@/components/shared';
+
 import { Box, Button, Checkbox, Divider, Select } from '@/components/ui';
 import { useI18nNamespaces } from '@/hooks';
 import { route } from '@/router';
@@ -154,7 +155,7 @@ const Accounts = () => {
             </Box>
           </Box>
           <Box sx={classes.wrapperActions}>
-            <Button variant="outlined">Cancel</Button>
+            <Button variant="outlined">{t('shared/button:cancel')}</Button>
             <Box sx={{ display: 'flex', gap: '24px' }}>
               <Button variant="outlined" onClick={() => {}}>
                 {t('shared/buttons:print')}
