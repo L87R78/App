@@ -24,7 +24,7 @@ const clientAccountsSlice = createSlice({
       .addCase(createClientAccount.pending, state => {
         state.status = ResponseStatus.PENDING;
       })
-      .addCase(createClientAccount.fulfilled, (state, action) => {
+      .addCase(createClientAccount.fulfilled, state => {
         state.status = ResponseStatus.FULFILLED;
       })
       .addCase(createClientAccount.rejected, (state, action) => {

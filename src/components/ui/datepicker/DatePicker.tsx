@@ -21,8 +21,7 @@ type CustomDatePickerProps = {
   disablePast?: boolean;
   labelClassName?: string;
   size?: 'small' | 'medium';
-} & Omit<DatePickerProps<Dayjs>, 'value' | 'onChange'>;
-
+} & Omit<DatePickerProps<any>, 'value' | 'onChange'>;
 const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
   label = 'Select Date',
   value,
