@@ -13,6 +13,17 @@ const responseHTTPcodes = {
   internalServerError: 500,
 } as const; // TODO: Add more status codes
 
+const clientIdentification = [
+  {
+    label: 'UCN',
+    value: 'UCN',
+  },
+  {
+    label: 'ID',
+    value: 'ID',
+  },
+];
+
 /* eslint-disable no-unused-vars */
 export enum ResponseStatus {
   IDLE,
@@ -25,4 +36,4 @@ export enum OnboardingStep {
   StartService = 'START_SERVICE',
 }
 
-export { phonePrefixes, responseHTTPcodes };
+export { clientIdentification, phonePrefixes, responseHTTPcodes };
