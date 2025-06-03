@@ -8,6 +8,7 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [tailwindcss()],
+  base: '/App/',
   resolve: {
     alias: {
       react: path.resolve(__dirname, 'node_modules/react'),
