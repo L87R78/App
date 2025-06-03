@@ -87,7 +87,7 @@ const ContactData: React.FC<{ handleChangeTab: (index: number) => void }> = ({
       <Card>
         <Box sx={classes.wrapperFields}>
           <InputPhone
-            label={t('shared/common:phoneNumber')}
+            label={t('shared/label:phoneNumber')}
             handleOnBlur={e => {
               setContactDataState(prev => ({
                 ...prev,
@@ -96,7 +96,7 @@ const ContactData: React.FC<{ handleChangeTab: (index: number) => void }> = ({
             }}
           />
           <TextField
-            label={t('shared/common:email')}
+            label={t('shared/label:email')}
             value={contactDataState.email}
             onChange={e =>
               setContactDataState(prev => ({
